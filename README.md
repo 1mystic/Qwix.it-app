@@ -18,7 +18,11 @@
 
 **This app is a multi-user household service platform.**
 
-**[More detailed description of your project here]**
+**Qwix.it serves as a platform for connecting service professionals with customers
+seeking various household services. The application will enable customers to easily
+book services, track their requests, and provide feedback. Service professionals can
+accept or reject service requests, manage their requests and packags. The admin
+will oversee the platform, manage user accounts, and ensure smooth operations.**
 
 ...
 
