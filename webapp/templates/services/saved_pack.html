@@ -1,0 +1,131 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Plumbing{% endblock %}
+
+{% block styles %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,700,0,-25" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='service.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash_message flash_{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+
+    <main>
+
+        <img src="{{ url_for('static', filename='assets/p2.png') }}" alt="plumbing" class="bg_img">
+        <div class = "title_service">
+            <h1 class="pk_title">
+        <h1 class="pk_title">Saved Packages</h1>
+        </div>
+
+        <div class="pkgs_container">
+            {% for data in package_data %}
+            
+            <div class="pkg_card">
+                <div class = "pkg_name">
+                <h5 class="pkg_title">{{ data.name }}</h5>
+                </div>
+                <div class="pkg_body">
+                     
+                    <h1 >
+
+                        <div class="pro_name">
+                            {% set pro_name = data.professional_name%}
+                            <a style="text-decoration : none;color: inherit; font-weight: 550;" 
+                            href="{{ url_for('pro_profile', edit_p= pro_name) }}">
+
+                            {{data.professional_name}}➚
+                            
+                            </a>
+                        </div>
+                        <div class="service_type">{{data.type}}</div>
+
+                        <div class="ratings_enc">
+                            <div class="stars_rating">
+                                {% if data.rating %}
+                                
+                                {% for i in range(data.rating|int -1) %}
+                                <span class="star">★</span>
+                                {% endfor %}                               
+                                
+                                <span class="star star-empty">★</span>
+                                 {% endif %}
+
+                            </div>
+                            <span class="rating_val">{{data.rating}}</span>
+                            <span class="review_count">({{data.reviews}} reviews) </span>
+                        </div>
+                        
+                        <div class="price_val">
+                            ₹ {{data.price}}
+                            <span class="price_per">/- </span>
+                        </div>
+                        
+                        <div class="xp_duration">
+                            {{data.experience}} yrs xp
+                        </div>
+                        <a class="saveb" 
+                        href="{{ url_for('unsave_package', pkg_id= data.package_id) }}" >
+                        Remove
+                        </a>
+
+                        <button class="book_btn toggler"
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#flush-collapseOne{{ data.package_id }}" 
+                        aria-expanded="false" 
+                        aria-controls="flush-collapseOne{{ data.package_id }}"                         
+                        data-id="{{ data.package_id }}">
+                        
+                        Book</button>
+
+                    </h1>
+                    
+                </div>
+               
+            </div>
+
+            <div class="book_dtl collapse" 
+                id="flush-collapseOne{{ data.package_id }}" 
+                data-bs-parent=".toggler">
+
+                <form action="{{ url_for('create_service_request') }}" method="POST">
+
+                    <input type="hidden" name="package_id" value="{{ data.package_id }}">
+                    <input type="hidden" name="professional_id" value="{{ data.professional_id }}">
+                    <p>Time</p>
+                    <input type="time" id="time" name="time" required>
+                    <p>Date</p>
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit" class="pkg_confirm">Confirm</button>
+                </form>               
+                 <!-- reviews -->   
+                  <div class="review_sec">         
+                    <h3 class="review_title">Reviews</h3>
+                    {% for r in data.comment %}                 
+                    <h5 style="font-size : 0.7rem; display:inline-block;
+                                max-width : 6rem; overflow: auto ;  "> 
+                        {{r}}  </h5>                                       
+                    {% endfor %}     
+                 </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+
+        
+       
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{% endblock %}
