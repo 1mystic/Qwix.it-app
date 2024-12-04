@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+    font-family: "Poppins";
+    background-color: #f0f0f0;
+}
+
+.enclose {
+    display: flex;
+    min-height: 100vh;
+}
+
+.left_signup {
+    flex: 1;
+    background-color: #292828;
+    border-radius: 10px;
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.right_signup {
+    flex: 1;
+    background-color: rgb(252, 201, 167);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.flash_message {
+    background-color: #f5c8cc;
+    border: 2px solid #ec838e;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 98%;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: "Poppins";
+}
+
+.flash_message.flash_success {
+    background-color: #c8f5c8;
+    border: 2px solid #8ec88e;
+}
+
+.headline {
+    margin: 4rem 0 2rem;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 5rem;
+    font-weight: 400;
+    font-family: "Bebas Neue", sans-serif;
+    color: white;
+    line-height: 5.5rem;
+}
+
+.orange_text {
+    color: #ff833e;
+}
+
+.image {
+    max-width: 75%;
+    height: auto;
+}
+
+.signup_form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: "Bebas Neue", sans-serif;
+    color: #333333;
+    margin-bottom: 2rem;
+}
+
+.selection_bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.role {
+    text-decoration: none;
+    color: grey;
+    font-size: 0.9rem;
+    padding: 1rem;
+    border: 1px solid grey;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+.role:hover, .role.active {
+    color: black;
+    background-color: #ff833e;
+    border: 1.2px solid rgb(26, 25, 25);
+    font-weight: bold;
+    margin: 0.1rem;
+}
+
+.input_bar {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: "Poppins";
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+
+.input_bar:focus {
+    outline: none;
+    border: 1px solid #ff833e;
+}
+
+input:valid {
+    border: 2px solid #c5fac5;
+    background-color: #f4f8f4;
+}
+
+.select {
+    width: 108%;
+}
+
+.upload {
+    width: 100%;
+    max-width: 100%;
+    color: #444;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+}
+.upload:valid {
+    border: 2px solid #c5fac5;
+    background-color: #f4f8f4;
+}
+
+
+.upload::file-selector-button {
+    margin-right: 20px;
+    border: 1rem;
+    background: #d5d7da;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    color: #000000;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    font-family: "Poppins";
+    font-size: 1rem;
+}
+
+.upload::file-selector-button:hover {
+    background: #e67a48;
+    color: white;
+}
+
+
+.btn {
+    width: 150px;
+    background-color: #f77016;
+    border: none;
+    outline: none;
+    height: 3rem;
+    border-radius: 2rem;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 1rem 0;
+    cursor: pointer;
+    transition: 0.5s;
+    font-family: "Poppins";
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background-color: #3b3b3b;
+}
+
+.login_link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login_link a {
+    color: rgb(240, 92, 7);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#document-proof {
+    display: none;
+}
+
+.file_label {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+
+.file_label:hover {
+    background-color: #f0f0f0;
+}
+
+#professional_fields {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .enclose {
+        flex-direction: column; 
+    }
+
+    .left_signup,
+    .right_login {
+        flex-basis: 100%; /* Take full width on mobile */
+    }
+}

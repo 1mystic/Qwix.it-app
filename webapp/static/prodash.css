@@ -1,0 +1,202 @@
+
+
+/* header bar  */
+
+.head{
+    display: flex;
+    background-color : rgb(241, 240, 238);
+    justify-content: center;    
+    align-items: center;
+    margin : 2rem ;
+    margin-left : 6.5rem ;
+    width : 25rem;
+    border-radius : 1rem ;
+    /*border : 5px solid rgb(190, 190, 190) ; */
+}
+
+
+
+/* main content */
+
+.flash_message {
+    background-color: #f5c8cc;
+    border: 2px solid #ec838e;
+    margin : 3rem auto 0.5rem auto;  
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 80%;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: poppins;
+  }
+  
+  .flash_success {
+    background-color: #c8f5d0;
+    border: 2px solid #8eebbf;
+  }
+  
+
+main {
+
+    margin: 2rem 6rem;
+
+}
+
+/* jobs */
+
+.jobs{
+    display: inline-block;
+    background-color: white;
+    padding: 0.6rem 0.9rem;
+    margin : 5rem 0rem 2rem 0rem;
+    border-radius: 1.8rem;
+    border: 3px solid grey;
+    font-size: 1.1rem !important;
+    font-weight: bold;
+    color : grey; 
+
+}
+
+/* new package */
+.new_package{
+    color: white;
+    background-color: #7f9955;
+    border-radius: 2rem;
+    padding: 0.65rem 1.4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+.new_package:hover{ 
+    background-color: rgb(73, 71, 71);
+}
+
+
+/*table*/ 
+
+#serviceTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#serviceTable th,
+#serviceTable td {
+    padding: 1.3rem;
+    text-align: left;
+    border-bottom: 1px solid #e0dca0;
+}
+#serviceTable td {
+    color : #3d3d3d;
+    font-size: 1rem;
+    font-family: Segoe UI;
+}
+#serviceTable thead {
+    background-color: #5d7546;
+    color: white;
+}
+
+#serviceTable thead th:first-child {
+    border-top-left-radius: 1rem;
+}
+
+#serviceTable thead th:last-child {
+    border-top-right-radius: 1rem;
+}
+
+#serviceTable tbody tr:nth-child(even) {
+    background-color: #fffddc;
+}
+#serviceTable tbody tr:hover {
+    background-color: #f5fff1;
+}
+
+.book_btns {
+    display: flex;
+    justify-content: left;
+    gap: 0.5rem ;
+    
+}
+.book_btn {
+    display: inline-block;
+    background-color: #bbf8a9;
+    color: rgb(78, 72, 72);
+    border: 2px solid #a3e28f;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.book_btn:hover {
+    background-color: #9ae994;
+
+}
+.reject {
+    background-color: #f8a9a9;
+    color: rgb(33, 33, 33);
+    border: 2px solid #e69292;
+}
+.reject:hover {
+    background-color: #e89b9b;
+}
+.assigned {
+    display: inline-block;
+    background-color: #cff592;
+    color: rgb(73, 72, 72);
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border : 2px solid #7f9955;
+}
+
+
+/* reviews */
+
+
+.reviews_sec {
+    display: inline-block;
+    background-color: #f8f9fa;
+    border-radius: 24px;
+    padding: 40px;
+}
+
+.review {
+    display: inline-block;
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.review:hover {
+    transform: translateY(-2px);
+}
+
+.review-text {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.customer-name {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.section-title {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    text-align: center;
+}
+

@@ -1,0 +1,234 @@
+a {
+    text-decoration: none;
+    color: #3d3d3d;
+}
+
+
+
+main {
+    padding: 2rem 5%;
+   
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    
+}
+
+.search_enclose {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border : 5px solid #e6f7d7 ;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+    padding: 1.5rem 1.4rem; 
+    width : auto ;
+    margin-top : 1rem;
+   
+}
+.search_inbox {
+    padding: 0.5rem 1rem;
+    /*border: 2px solid #81A263;*/
+    border : none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    width: 12rem;
+    outline: none;
+}
+
+
+.category_btn, .location_btn, .experience_btn, .price_btn, .service_btn {
+    background-color: #f5ffdd;
+    color: rgb(36, 36, 36);
+    border: none;
+    padding: 0.5rem;
+    margin-left : 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight:500;
+    display: inline-block;
+    width : auto ;
+}
+
+
+
+.search_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: #93bd64;
+    color: white;
+    border: none;
+    padding: 0.6rem ;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 3rem;
+    margin-left : 1.5rem;   
+}
+
+.search_btn:hover {
+    background-color: #72d85d;
+}
+
+.material-symbols-rounded {
+    font-size: 26px;
+}
+
+.reset_btn{
+    display: inline-block;
+    padding : 0.28rem 0.9rem  !important;
+    background-color: #acf37d;
+    color: rgb(39, 38, 38);
+    border: 3px solid #afdb75;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-left: 0.8rem;
+    
+}
+.reset_btn:hover{
+    background-color: #9ae965;
+    color: rgb(104, 22, 22);
+}
+
+.table_enclose {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 1rem;
+    /* color #F1EB90; */
+}
+
+#serviceTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+#serviceTable th,
+#serviceTable td {
+    padding: 1.3rem;
+    text-align: left;
+   
+}
+
+#serviceTable td {
+    color : #3d3d3d;
+    font-size: 1rem;
+    font-family: Segoe UI;
+}
+
+#serviceTable thead {
+    background-color: #627442;
+    color: white;
+}
+
+#serviceTable thead th:first-child {
+    border-top-left-radius: 0.5rem;
+}
+
+#serviceTable thead th:last-child {
+    border-top-right-radius: 0.5rem;
+}
+
+#serviceTable tbody tr:nth-child(even) {
+    background-color: #f7fcea;
+}
+
+.pro_status, .pro_book, .pro_reject {
+display: inline-block;
+text-align: center;
+padding: 0.5rem 1rem;
+border: 1px solid transparent ;
+border-radius: 1rem;
+cursor: pointer;
+background-color: rgb(240, 235, 235);
+font-weight: bold;
+}
+
+.pro_status:hover {
+background-color: #edf8e3;
+}
+
+.pro_book:hover {
+    background-color: #9ae994;
+}
+
+.pro_reject:hover {
+    background-color: #e89b9b;
+}
+.assigned {
+    display: inline-block;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent ;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: rgb(174, 228, 169);
+    color : #3d3d3d;
+    font-weight: bold;
+}
+
+
+
+
+.book_btn {
+    background-color: #3d3d3d;
+    color: rgb(247, 241, 241);
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.book_btn:hover {
+    background-color: #DC765C;
+}  
+
+.book_dtl {
+    background-color: #f1eeed;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: Poppins;
+    border-radius: 0.5rem;
+    border: 0px solid #8a8888;
+    padding: 0.4rem 0.5rem;
+    max-width: 12rem;
+}
+
+.book_dtl h1,p {
+
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    margin: 0.6rem auto 0 auto;
+    padding: 0.5rem 0.2rem ;
+    border-radius: 0.5rem;  
+    border: 2px solid #747272;
+}
+
+.booking{
+    width : 5%;
+}
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+
+#time, #date {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    width: 20%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+

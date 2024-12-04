@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* fonts - Bebas Neue", sans-serif*/
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+    font-weight: 500;
+}
+
+body{
+    background-color: #ffffff;
+    font-family: nunito;
+    margin: 1rem;
+    padding: 0;
+    /* background-image: ; */
+    
+}
+
+/* Navigation styles */
+
+
+img {
+  display: flex;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+
+h1{
+    font-family: poppins;
+    font-weight: 500;   
+    font-size: 1.5rem;
+    color: #504f4e;
+}
+
+/* Navigation styles */
+
+/* navbar styles */
+.navbar {
+    display: flex;
+    top : 0;
+    position : sticky;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3vw;
+    background-color: #ffffff;
+    box-shadow: 0 5px 3px rgba(185, 184, 184, 0.1);
+    border-radius: 1rem;
+    margin : 0 2rem ;
+    z-index: 1000000;
+    background-image: translucent;
+}
+
+.qwix a {
+    color: #81A263;
+    text-decoration: none;
+    font-size: 2.2rem;
+    /*font-family: Bebas Neue;*/
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.qwix a span {
+    color: #242323;
+}
+
+.menu_btn {
+    display: none;
+}
+
+.nav_links {
+    display: flex;
+    list-style: none;
+     
+}
+
+.nav_links li {
+    margin: 0 1rem;
+}
+
+.nav_links a {
+    color: black;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.nav_links a:hover {
+    border-color: rgb(100, 119, 29);
+    color: rgb(86, 94, 20);
+}
+
+.nav_btns {
+    display: flex;
+    gap: 1rem;
+}
+
+
+
+.profile {
+    color: black;
+    background-color: transparent;
+    padding: 0.75rem 1.5rem 0.75rem 0rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.profile:hover {
+    color: rgb(110, 119, 25);
+}
+
+.cust_nav_p {    
+    margin-top: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+.savedp {
+        color: rgb(67, 66, 66);
+        padding: 0rem 0rem 0.75rem 0rem;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;        
+}
+.savedp:hover {
+    color: rgb(110, 119, 25);
+}
+
+/* 📗| */
+
+.logout {
+    color: white;
+    background-color: #7f9955;
+    border-radius: 2rem;
+    padding: 0.65rem 1.4rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    max-height: 3.2rem;
+}
+
+.logout:hover {
+    background-color: rgb(73, 71, 71);
+    color: white;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+@media (max-width: 940px) {
+    .menu_btn {
+        display: block;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: rgb(26, 25, 25);
+    }
+
+    .nav_links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav_links li {
+        margin: 1rem;
+    }
+
+    .nav_btns {
+        display: none;
+    }
+
+    #menu-toggle:checked ~ .nav_links {
+        display: flex;
+    }
+    #menu-toggle:checked ~.nav_links a:hover {
+        border-color: black;
+        cursor: pointer;
+    }
+}

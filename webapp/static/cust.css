@@ -1,0 +1,416 @@
+
+/*main content*/
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.username{
+    margin-left: 13rem;
+    margin-top: 4rem;    
+}
+.username h1 {
+    font-size: 3rem;
+    font-weight: 550;
+    font-family: 'Pacifico', cursive;
+    color : #7a7a7a;
+}
+
+.flash_message {
+  background-color: #f5c8cc;
+  border: 2px solid #ec838e;
+  margin : 3rem auto 0.5rem auto;  
+  padding: 0.5rem 1rem;
+  text-align: center;
+  width: 80%;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: poppins;
+}
+
+.flash_success {
+  background-color: #c8f5d0;
+  border: 2px solid #8eebbf;
+}
+
+
+
+/* services booked */
+
+.booked_head{
+    display: inline-block;
+    padding: 0.6rem 0.9rem;
+    margin : 2rem 5rem 0rem 0.5rem;
+    border-radius: 1.8rem;
+    border: 3px solid grey;
+    font-size:0.8rem ;
+    font-weight: bold;
+    color : grey; 
+}
+
+.material-symbols-rounded{
+  position : absolute;
+    
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 100,
+  'GRAD' 0,
+  'opsz' 10 ;
+        
+}
+.sdetail{
+  margin-left: 2rem;
+}
+
+.service_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: left;
+  padding: 1rem;
+  margin-left: 11rem;
+  margin-top: 1rem;
+}
+
+
+.service_card {
+      
+  background-color: #f1eeed;
+  border-radius: 2rem;
+  padding: 1.3rem 0.6rem;
+  width: 16rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.service_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.service_title {
+  display: inline-block; 
+  color: #92452e;
+  padding: 0.8rem 1.2rem;
+  border-radius: 5rem;
+  font-size: 1.5rem;
+  font-weight: 600; 
+  
+}
+
+
+
+.service_body {
+
+  padding: 0.5rem 0.8rem 0.8rem 0.8rem;
+  text-align: center;
+  color: rgb(117, 91, 91);
+  border-radius: 0.8rem;
+  margin-bottom: 1.5rem;
+  /*border: 0.1px solid #d6d6d6;*/
+  
+}
+
+.service_body p {
+  margin: 0.5rem auto;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Poppins;
+  border-radius: 0.5rem;
+  border: 0px solid #ccc;
+  padding: 0.4rem 0.5rem;
+  
+}
+
+#status{
+  background: rgba(238, 148, 118,0.2);
+  backdrop-filter: blur(4px);
+  color: #92452e;
+  padding: 0.4rem 0.7rem;
+  border-radius: 5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  max-width: 5rem;
+  margin : 0.5rem !important; 
+}
+
+.book_btn {
+  background-color: #ffffff;
+  color: #363636;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  margin : 1rem 0.5rem 0 0.5rem
+}
+
+
+.book_btn:hover {
+  background-color: #363636 !important;
+  color: #f7f7f7;
+
+}  
+
+ 
+
+/* header bar  */
+
+.head, .premium{
+    display: flex;
+    flex-wrap: wrap; /* Ensures cards wrap to the next line if needed */
+    justify-content: center; /* Center the cards in the row */
+    gap: 3rem; /* Space between cards */
+    padding: 1rem;
+    margin: 5rem 13rem 3rem 10rem; /* Use auto to center the container horizontally */
+    width: auto; /* Allow width to adjust based on the number of cards */
+}
+
+
+.service{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F1EB90;
+    padding: 1.2rem 0.8rem 0.5rem 0.8rem;
+    border-radius: 1.8rem;
+    border:none;
+    width: 10.3rem; 
+    height: auto;
+    margin-top : 1rem; 
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    /*box-shadow: #dbf0c3 0.1rem 0.1rem 0.8rem;*/
+    
+}
+.service:hover {
+  background-color: #f1d57a;
+  transform: translateY(-2px) translateX(-1px);
+  cursor:pointer;
+}
+
+/* Green header for the "service" text */
+.service_text {
+    background-color: #81A263;
+    color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 10rem;
+    height: 2rem ; 
+    margin-bottom: 1rem;
+    font-weight: bold;
+    position: absolute;
+    top: -1.25rem;
+    left: 0;
+}
+
+
+
+/*icons*/ 
+.icon{
+    border-radius: 5rem;
+    /*border: 2px solid rgba(241, 110, 34, 0.925);*/
+    width: 7rem;  
+    height: 7rem;
+    padding: 0.3rem;
+    margin : 1.3rem auto 1.1rem auto; 
+}
+
+
+/*banner*/
+.banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DC765C;
+    padding: 1.5rem;
+    margin : 6.5rem 5rem 1rem 5rem;
+    border-radius: 1.8rem;
+    border: 2px solid rgba(255, 255, 255, 0.925);
+}
+.banner h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    color:#ffffff;
+}
+.banner:hover {
+    background-color: #81A263;
+    color: #ffffff;
+    transition: 0.3s;
+    cursor:pointer;
+}
+
+.section_service{
+  /*margin-top: 30vh;
+  margin-bottom: 30vh; */
+  margin : 5rem 5rem 5rem 5rem;
+  background-color: #f7f7f7;
+  padding: 4rem;
+  border-radius: 3rem;
+}
+
+
+.plat_icon{
+   position: relative ;
+   font-size: 5.5rem;
+   color : rgb(230, 161, 136) ;
+   margin : 0rem 0rem 0rem 0rem;
+   padding: 0rem;
+   top : 1.2rem ;
+   right : 0rem ;
+   
+}
+.premium_section {
+  padding-top : 2.3rem; 
+}
+.premium_head{
+  display: inline-block;
+  width : auto ;
+  border: none;
+  margin : 0rem ; 
+  padding: 0rem;
+}
+
+.premium_head h1 {
+    display: inline-block;
+    font-size: 3.8rem;
+    font-weight: 550;  
+    color : #696969; 
+}
+
+/* cards for premium services */
+.premium {    
+    margin : 2.5rem 7rem 1rem 3rem;
+    justify-content: left;
+    width : auto ;
+}
+
+.emergency {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: left; 
+    text-align: center;
+    margin : 1rem 5rem 1rem 5rem;   
+    border-radius: 3rem;
+    gap: 3rem; 
+    padding: 1rem; 
+    width: auto; 
+}
+
+.emergency_head{
+  display: inline-block; 
+  padding: 1rem 1.5rem ;    
+  border-radius: 1.8rem;
+  /*border: 5px solid rgb(218, 203, 203);*/
+  width : auto ;
+}
+
+.emergency_head h1 {
+  font-size: 4rem;
+  font-weight: 550;
+  color : #c07e7e;
+}
+
+.etop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top : 3rem ;
+    background-color: #e6e6e1;
+    padding: 1.2rem 0.8rem 0.5rem 0.8rem;
+    border-radius: 1.8rem;
+    border: 2px solid rgba(179, 177, 177, 0.925);
+    width: 10.3rem; /* Set fixed width for cards */
+    height: auto;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+.etop:hover {
+  background-color: #f5f0ee;
+  transform: translateY(-2px) translateX(-1px);
+  cursor:pointer;
+}
+
+/* Green header for the "service" text */
+.etop_text {
+    background-color: #ce5f3a;
+    color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 10rem;
+    height: 2rem ; 
+    margin-bottom: 1rem;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    left: 0;
+}
+
+
+/*table*/ 
+.table {
+  border-spacing: 0;
+  margin: 1rem auto 1rem 5rem;
+  width: 90%;
+  overflow: auto;
+  border-radius: 1rem;
+  /*border: 1px solid #F1EB90;*/
+}
+
+table thead{
+  background-color: #627442;
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 1rem 1.2rem;
+  padding: 1.3rem;
+  text-align: left;
+}
+.table td{
+  color : #3d3d3d;
+  font-size: 1rem;
+  font-family: Segoe UI;
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: #f7fcea;
+}
+
+.table tbody tr:hover {
+  background-color: #e9f3d0;
+}
+.table tbody td:hover {
+  color : #000000;
+}
+
+.table tbody tr:last-of-type {
+  border-bottom: 0.1rem solid; 
+}
+
+.table button {
+  padding: 0.5rem 2rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border: 0.2rem solid #81A263; /* Changed to match .top-text background color */
+  color: #81A263; /* Added to match border color */
+}
+
+.table button:hover {
+  background: #81A263; /* Changed to match .top-text background color */
+  color: #fff;
+  transition: 0.3s; /* Changed from 0.5rem to 0.3s for a smoother transition */
+}

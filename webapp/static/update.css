@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* fonts - Bebas Neue", sans-serif*/
+
+.flash_message {
+    background-color: #f5c8cc;
+    border: 2px solid #ec838e;
+    margin : 3rem auto 0.5rem auto;  
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 80%;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: poppins;
+  }
+  
+  .flash_success {
+    background-color: #c8f5d0;
+    border: 2px solid #8eebbf;
+  }
+  
+
+main {
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.service_box {
+    background-color: #DC765C;
+    padding: 2rem;
+    margin: 3rem auto;
+    border-radius: 2rem;
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.service_box h2 {
+    display: inline-block;
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    border: 2px solid #f0ecec;
+}
+
+.service_details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.detail {
+    
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+
+}
+p {
+    display: inline-block;
+    color: #fff;
+    margin: 1rem 0.6rem 2.5rem 0;
+    font-size: 1.3rem;
+    padding: 0.2rem 1rem;
+    border-radius: 2rem;
+    border: 2px solid #f0ecec;
+}
+
+.rating {
+    display: inline-block;
+    margin : 0.5rem ; 
+}
+input[type="radio"] {
+    position: relative;
+    display: inline-block;
+    margin: 1.5rem 0.5rem 0.5rem 0;
+    width: 25px;
+    height: 25px;
+  
+  }
+
+#feedback {
+    display: inline-block;
+    margin: 1rem 0.5rem 0 0;
+    padding : 0.2rem 1rem;
+    
+}
+
+#time, #date {
+    font-size: 1rem;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    margin: 0 auto;  
+    text-align: center;
+}
+
+#duration{
+    padding: 0 0.5rem;
+    border-radius: 0.4rem;
+    color : transparent;
+    font-size : 2rem ; 
+    font-weight: bold;
+}
+#duration:valid{
+    color: #333;
+    padding: 0 0.5rem;
+    border-radius: 0.4rem;
+    font-size : 2rem ; 
+    font-weight: 400;    
+}
+
+.contain_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+    margin-top: 2rem;
+    background-color: #333;
+    border-radius: 1rem;
+}
+
+.pdetail {
+    width: 45rem ;
+    display: flex;
+    justify-content: left;
+    align-items:center;
+    gap: 1rem;
+    color: white;   
+    padding: 1rem;   
+    /*border : 1px solid #f0ecec;*/
+    font-size: 1.1rem;
+    margin-left : 3rem ; 
+    
+   
+}
+
+label{
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin : 1rem 0;
+    width : 10rem ;
+}
+.input_bar {
+    width: 50%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-family: "Poppins";
+    border: none;
+    border-radius: 5px;
+    
+}
+
+.input_bar:focus {
+    outline: none;
+    border: 1px solid #ff833e;
+}
+
+input:valid {
+    border: 2px solid #c5fac5;
+    background-color: #f4f8f4;
+}
+
+
+.upload {
+    width: 50%;
+    max-width: 90%;
+    color: #444;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+}
+.upload:valid {
+    border: 2px solid #c5fac5;
+    background-color: #f4f8f4;
+}
+
+
+.upload::file-selector-button {
+    margin-right: 20px;
+    border: 1rem;
+    background: #d5d7da;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    color: #000000;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    font-family: "Poppins";
+    font-size: 1rem;
+}
+
+.upload::file-selector-button:hover {
+    background: #e67a48;
+    color: white;
+}
+
+
+
+.button_enclose {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap : 3rem ;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    
+    
+}
+
+.cancel {
+    background-color: #F1EB90;
+}
+
+.confirm {
+    background-color: #F1EB90;
+}
+
+.btn:hover {
+    background-color: #333;
+    color: #fff;
+}

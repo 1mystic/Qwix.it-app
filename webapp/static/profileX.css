@@ -1,0 +1,158 @@
+
+
+
+
+.flash_message {
+    background-color: #f5c8cc;
+    border: 2px solid #ec838e;
+    margin : 3rem auto 0.5rem auto;  
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 80%;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: poppins;
+  }
+  
+  .flash_success {
+    background-color: #c8f5d0;
+    border: 2px solid #8eebbf;
+  }
+  
+
+
+.the_profile_enc {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    margin : 3rem auto;
+}
+
+.top_section {
+    background: #eb7f5f;
+    padding: 2rem;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.role_badge, .service_badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.xp_badge, .rev_badge , .rat_badge {
+    display: inline-block;
+    margin : 1.1rem 0.2rem 0 0.2rem; 
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+
+
+.pro_pic{
+    width: 10rem;
+    height: 10rem;
+    margin: 0 auto 1rem;
+    position: relative;
+    border-radius: 50%;
+}
+
+
+.upload {
+    width: 7rem;
+    height: 7rem;
+    max-width: 10rem;
+    color: #444;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 200rem;
+    border: 1px solid rgba(8, 8, 8, 0.288);
+}
+.upload:valid {
+    border: 2px solid #c5fac5;
+    background-color: #baf3ba;
+}
+
+
+.upload::file-selector-button {
+    width : 7rem ; 
+    height : 7rem ;
+    max-width: 7rem;
+    background: #d5d7da;
+    padding: 1rem 2rem;
+    border-radius: 200rem;
+    border : none; 
+    color: #000000;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    font-family: "Poppins";
+    font-size: 1rem;
+    text-wrap: wrap;
+}
+
+
+.upload::file-selector-button:hover {
+    background: #e67a48;
+    color: white;
+}
+
+.main_content {
+    padding: 2rem;
+}
+
+.user_detail {
+    margin-bottom: 1.5rem;
+}
+
+.detail_label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.detail_value {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.dinput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1.1rem;
+   
+}
+
+.edit_btn{
+    background: #eb7f5f;
+    color: rgb(255, 255, 255);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 550;
+    
+}
+
+.edit_btn:hover {
+    background: #4d4c4c;
+    color: white;
+    
+}
+
+

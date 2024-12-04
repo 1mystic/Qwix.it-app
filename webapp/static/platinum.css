@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* fonts - Bebas Neue", sans-serif*/
+/* Global styles */
+
+
+/* Premium Box */
+.premium-box {
+    background-color: #DC765C;
+    padding: 2rem;
+    margin: 3rem auto;
+    border-radius: 2rem;
+    width: 80%;
+    text-align: center;
+    position: relative;
+}
+
+.premium-box h2 {
+    display: inline-block;
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: 'Poppins';
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    border: 2px solid #f0ecec;
+    margin-bottom: 4rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    margin: 4rem auto 7rem auto;
+    gap : 4rem ; 
+}
+
+.option {
+    text-align: center;
+}
+
+.option-title {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.option-details {
+    background-color: transparent;
+    color: #fff;
+    margin-top: 1rem;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    padding:2rem;
+    line-height: 2.5rem;
+
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.payment-method {
+    background-color: #F1EB90;
+    color: #333;
+}
+
+.confirm {
+    background-color: #F1EB90;
+    color: #333;
+}
+
+.btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .options-container {
+        flex-direction: column;
+    }
+
+    .button-container {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 80%;
+        margin: 0.5rem auto;
+    }
+}
