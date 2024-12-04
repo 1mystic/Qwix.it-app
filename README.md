@@ -1,6 +1,7 @@
 
 # Qwix.it - Multi-User Household Service App
 
+**Deployed on python anywhere** - [Qwix_it_Deploy](https://1mystic4u.pythonanywhere.com/)
 
 **Project Report:**  [Download Project Report](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link) ([Google Drive Link](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link))
 
