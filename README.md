@@ -4,7 +4,7 @@
 
 **Project Report:**  [Download Project Report](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link) ([Google Drive Link](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link))
 
-**YouTube Video:** (Link to be added once available)
+**YouTube Video:** [YT](https://youtu.be/47l2mmetJRA)
 
 **Wireframes:**  [View Wireframes](https://drive.google.com/file/d/1-vAL9DPS098npn7_ueK7RJrd9t81KhXq/view?usp=drive_link) ([Google Drive Link](https://drive.google.com/file/d/1-vAL9DPS098npn7_ueK7RJrd9t81KhXq/view?usp=drive_link))
 
