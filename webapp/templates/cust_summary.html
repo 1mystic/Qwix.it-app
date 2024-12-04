@@ -1,0 +1,138 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Search{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='summary.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <main>
+        <div class="greeting">
+            <h1>Here's your summary, {{username}}</h1>
+        </div>
+
+        <div class="summary_stats">
+            <div class="stat_card">
+                <h2>Total Bookings</h2>
+                <p>{{total_booked_requests}}</p>
+            </div>
+            <div class="stat_card">
+                <h2>Services Used</h2>
+                <p>{{services_used}}</p>
+            </div>
+            <div class="stat_card">
+                <h2>Packages Used</h2>
+                <p>{{packages_used}}</p>
+            </div>
+        </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script> 
+       
+
+    <div class="chart_contain">
+        <div class="charts">
+            <h2>Popular Requests</h2>
+            <canvas id="popularChart"></canvas>
+        </div>
+        <div class="charts">
+            <h2>All Requests</h2>
+            <canvas id="allRequestsChart"></canvas>
+        </div>
+        <div class="charts">
+            <h2>Top professionals</h2>
+            <canvas id="topProfessionalsChart"></canvas>
+        </div>
+    </div>
+
+        <script>
+        const chartConfig = {
+            type: 'bar',
+            options: {
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false,
+                        grid: {
+                            display: false
+                        },
+                        max: 5 // Max value of x axis
+                       
+                   
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                maintainAspectRatio: true,
+                responsive: true
+            }
+        };
+
+        // Popular Requests Chart
+        new Chart(document.getElementById('popularChart'), {
+            ...chartConfig,
+            data: {
+                labels: {{request_labels | safe}},
+                datasets: [{
+                    data:{{request_data }},
+                    backgroundColor: [
+                        '#8bae6c',
+                        '#f7e98d',
+                        '#8bae6c'
+                    ],
+                    borderRadius: 20
+                }]
+            }
+        });
+
+        // All Requests Chart
+        new Chart(document.getElementById('allRequestsChart'), {
+            ...chartConfig,
+            data: {
+                labels: {{req_labels|safe}},
+                datasets: [{
+                    data: {{req_data}},
+                    backgroundColor: [
+                        '#8bae6c',
+                        '#f7e98d',
+                        '#8bae6c'
+                    ],
+                    borderRadius: 20
+                }]
+            }
+        });
+
+        // Top Professionals Chart
+        new Chart(document.getElementById('topProfessionalsChart'), {
+            ...chartConfig,
+            data: {
+                labels: {{pro_labels|safe}},
+                datasets: [{
+                    data: {{pro_data}},
+                    backgroundColor: [
+                        '#8bae6c',
+                        '#f7e98d',
+                        '#8bae6c'
+                    ],
+                    borderRadius: 20
+                }]
+            }
+        });
+        </script>
+
+     
+
+    </main>
+
+{% endblock %}

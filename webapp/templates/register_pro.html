@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <title>Qwix - Sign Up</title>
+</head>
+<body>
+    <div class="enclose">
+        <div class="left_signup">
+            <div style="margin-top: 0;" class="headline">
+                <h1> Join </h1> <h1> </h1> <h1 class="orange_text"> Qwix</h1><h1>.it</h1>
+            </div>
+            <img src="{{ url_for('static', filename='registern.png') }}" alt="Welcome image" class="image">
+            <div style="margin-top: 12rem;" class="space_adjust">
+
+            </div>
+        </div>
+
+        <div class="right_signup">
+            <form style="margin-top: 0;" class="signup_form" method="post" enctype="multipart/form-data" >
+
+                <h2 class="title">Join us - <span class="orange_text" id="signup-type">Partner</span></h2>
+
+                <div class="selection_bar">
+                    <a href="{{ url_for('register_cust')}}" class="role" id="customer-role" style=" margin-right:1.5rem;">
+                    Customer</a>
+                    <a href="#" class="role active" id="professional-role">Professional</a>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="flash_message flash_{{ category }}">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
+                {% endwith %} 
+               
+                
+                <input type="text" name="p_name" placeholder="Full Name" class="input_bar" minlength="3" required>
+                <input type="email" name="p_email" placeholder="Email" class="input_bar" minlength="3" required>
+                <input type="password" name="p_password" placeholder="Password" class="input_bar" minlength="6" required>
+                <input type="text" name="p_address" placeholder="Address" class="input_bar" minlength="3" required>
+                <input type="text" name="p_pincode" placeholder="Pincode" class="input_bar" minlength="6" maxlength="6" required>
+                <input type="text" name="p_phone" placeholder="Phone Number" class="input_bar" minlength="10" maxlength="10" required>
+                <input type="number" name="p_base_price" placeholder="Base Price (per hour)" class="input_bar" minlength="1" required>
+                
+
+                <select name="service_type" class="input_bar select" id="service-type" required>
+                    <option value="">Select Service Type</option>
+                    {% for s in services %}
+                        <option value="{{s.service_name}}">{{s.service_name}}</option>
+                    {% endfor %}
+                   
+                </select>
+                <select name="experience" class="input_bar select" id="experience" required>
+                    <option value="">Years of Experience</option>
+                    <option value="0-1">0-1 years</option>
+                    <option value="1-3">1-3 years</option>
+                    <option value="3-5">3-5 years</option>
+                    <option value="5-10">5-10 years</option>
+                    <option value="10+">10+ years</option>
+                </select>
+
+                
+                <span style="padding-bottom : 0.5rem"> Document proof </span >
+                <input name="document" type="file" accept=".pdf" required class = "upload">
+                
+               
+
+                <button type="submit" class="btn">Sign up</button>
+                <p class="login_link">Already have an account? <a href="{{ url_for('login')}}">Log in</a></p>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>

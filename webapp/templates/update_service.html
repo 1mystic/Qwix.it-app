@@ -1,0 +1,59 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Create Package{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="service_box">
+            <h2>Update - {{service_name}}</h2>
+            <form action="{{ url_for('update_service',service_id = service_id) }}" method="POST">
+                
+                <div class="contain_details">                  
+
+                    <div class="pdetail">
+                        <label for="name">Service Name:</label>
+                        (No trailing spaces)
+                        <input class="input_bar" type="text" 
+                        id="name" name="name" 
+                        pattern="[^ ](?:.*[^ ])?"
+                        required placeholder={{service_name}} required>
+                    </div>
+                    
+                    
+                    <div class="pdetail">
+                        <label for="price">Base Price:</label>
+                  
+                        <input class="input_bar" type="number" id="price" name="base_price" placeholder={{base_price}} required>
+                    </div>
+                    
+                    
+                    <div class="pdetail">
+                        <label for="description">Description:</label>
+                  
+                        <textarea class="input_bar" id="description" name="description" rows="1" placeholder={{description}} required></textarea>
+                    </div>
+ 
+                    <div class="pdetail">
+                        <label for="price">Category</label>
+                        <select name="category" class="input_bar select" id="categories" required>
+                            <option value="">Select Category</option>
+                            <option value="normal">Normal</option>
+                            <option value="platinum">Platinum</option>
+                            <option value="emergency">Emergency</option>
+                        </select>
+                    </div>
+                   
+                </div>
+
+                <div class="button_enclose">
+                    <button type="button" class="btn cancel" onclick="window.location.href='{{ url_for('admin') }}'">Cancel</button>
+                    <button type="submit" class="btn confirm">Update Service</button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Customer Dashboard{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='platinum.css') }}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <main>
+       
+        <form action="{{ url_for('platinum') }}" method="POST">
+        <div class="premium-box">
+            <a href="{{url_for('cust_dash')}}" class="close-btn">X</a>
+            <h2> {{customer_name}}, Premium members enjoy :</h2>
+            
+            <div class="options-container">
+                
+                <input type="hidden" name="customer_id" value="{{customer_id}}">  
+                <div class="option">
+                    <a class="option-title">Benifit</a>
+                    <div class="option-details">Priority Customer Support<br>
+                        Exclusive Discounts<br>
+                        Early Access to New Features
+                    </div>
+                </div>
+                <div class="option">
+                    <a class="option-title">Benifits</a>
+                    <div class="option-details"> Free Monthly Consultations<br>
+                        Personalized Recommendations<br>
+                        Access to Premium Content
+                    </div>
+                </div>
+                <div class="option">
+                    <a class="option-title">Features</a>
+                    <div class="option-details"> Unlimited Data Storage<br>
+                        Advanced Analytics Tools<br>
+                        Customizable Dashboard
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type='submit' class="btn payment-method">Payment Method</button>
+                <button type='submit' class="btn confirm">Confirm</button>
+            </div>
+           
+        </div>
+    </form>
+    </main>
+
+{% endblock %}

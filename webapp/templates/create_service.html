@@ -1,0 +1,75 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Create Package{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+{% endblock %}
+
+{% block content %}
+
+    
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+    <div class="flash_message flash_{{ category }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+   
+
+    <main>
+        <div class="service_box">
+            <h2>New Service</h2>
+            <form action="{{ url_for('create_service') }}" method="POST" enctype="multipart/form-data">
+                
+                <div class="contain_details">                  
+
+                    <div class="pdetail">
+                        <label for="name">Service Name:</label>
+                    
+                        <input class="input_bar" type="text" id="name" name="name" required>
+                    </div>
+                    
+                    
+                    <div class="pdetail">
+                        <label for="price">Price:</label>
+                  
+                        <input class="input_bar" type="number" id="price" name="base_price" step="0.01" required>
+                    </div>
+                    
+                    
+                    <div class="pdetail">
+                        <label for="description">Description:</label>
+                  
+                        <textarea class="input_bar" id="description" name="description" rows="1" required></textarea>
+                    </div>
+ 
+                    <div class="pdetail">
+                        <label for="price">Category</label>
+                  
+                        <select     class="input_bar" id="category" name="category" required>
+                            <option value="normal">Normal</option>
+                            <option value="platinum">Platinum</option>
+                            <option value="emergency">Emergency</option>
+                        </select>
+                            
+                    </div>
+
+                    <div class="pdetail">
+                    <label for="">Image (.png) </label>
+                  
+                    <input name="file" type="file" accept=".png" required class="upload">
+                    
+                    </div>
+                   
+                </div>
+
+                <div class="button_enclose">
+                    <button type="button" class="btn cancel" onclick="window.location.href='{{ url_for('admin') }}'">Cancel</button>
+                    <button type="submit" class="btn confirm">Create Service</button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}

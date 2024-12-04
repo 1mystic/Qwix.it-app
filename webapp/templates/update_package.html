@@ -1,0 +1,51 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Create Package{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="service_box">
+            <h2>Service ID - {{id}}</h2>
+            <form action="{{ url_for('update_package', package_id=package_id) }}" method="POST">
+                
+                <div class="contain_details">                  
+
+                    <div class="pdetail">
+                        <label for="name">Package Name:</label>
+                    
+                        <input class="input_bar" type="text" id="name" name="name" placeholder="{{name}}" required>
+                    </div>
+                    
+                    
+                    <div class="pdetail">
+                        <label for="price">Price:</label>
+                  
+                        <input class="input_bar" type="number" id="price" name="price" step="0.01" placeholder="{{price}}" required>
+                    </div>
+                    
+                    
+                    <div class="pdetail">
+                        <label for="description">Description:</label>
+                  
+                        <textarea class="input_bar" id="description" name="description" rows="1" placeholder="{{description}}" required></textarea>
+                    </div>
+
+                    <div class="pdetail">
+                        <label for="duration">Duration (HH:MM):</label>
+                        <input type="time" id="duration" name="duration" placeholder="{{duration}}" required >
+                        
+                    </div>
+                </div>
+
+                <div class="button_enclose">
+                    <button type="button" class="btn cancel" onclick="window.location.href='{{ url_for('pro_dash') }}'">Cancel</button>
+                    <button type="submit" class="btn confirm">Update Package</button>
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock %}

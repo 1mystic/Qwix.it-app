@@ -1,0 +1,119 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Search{% endblock %}
+
+{% block styles %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+       
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <main>
+        <div class="search_enclose">
+            <form action="{{ url_for('cust_search') }}" method="GET">
+            
+            {% if searched_text%}  
+            <input type="text" name="search_text" id="searchInput" placeholder={{searched_text}} class="search_inbox">
+            {% else %}
+            <input type="text" name="search_text" id="searchInput" placeholder="Search text" class="search_inbox">
+            {% endif %}
+            <select  name="pricef"  class="price_btn">
+                {% if f_price %}
+                <option value="">{{f_price}}</option>
+                {% else %}
+                <option value="">Price</option>
+                {% endif %}
+                <option value="500">0-500</option>
+                <option value="1000">500-1000</option>
+                <option value="1500">1000-1500</option>
+                <option value="max">1500+</option>
+            </select>
+            <select name="servicef" class="service_btn">
+                {% if f_service %}
+                <option value="">{{f_service}}</option>
+                {% else %}
+                <option value="">Service</option>
+                {% endif %}
+                {% for s in services %}
+                <option value="{{s.name}}">{{s.name}}</option>
+                {% endfor %}
+            </select> 
+
+            <select  name="xpf" class="experience_btn">   
+                {% if f_xp %}
+                <option value="">{{f_xp}}</option>
+                {% else %}
+                <option value="">Experience</option> 
+                {% endif %}
+                <option value="0-1">0-1 years</option>
+                <option value="1-3">1-3 years</option>
+                <option value="3-5">3-5 years</option>
+                <option value="5-10">5-10 years</option>
+                <option value="10+">10+ years</option>
+            </select>
+
+            <a href="{{ url_for('cust_search') }}" class="reset_btn">
+                Reset
+              </a>
+            
+           
+               
+                <button  type="submit" class="material-symbols-rounded search_btn">                                      
+                search
+                </button>
+
+                
+            </form>
+            
+        </div>
+
+        <div class="table_enclose">
+            <table id="serviceTable"class="table">
+             
+                <thead id = "my_requests">
+                    <tr>
+                        <th style=" border-top-left-radius: 1rem;">ID</th>
+                        <th>Service</th>
+                        <th>Package</th>
+                        <th>Professional</th>                        
+                        <th>Experience</th>
+                        <th>Price</th>
+                        <th>phone</th>                        
+                        <th style = " border-top-right-radius: 1rem;">Date - Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in packages %}
+                    <tr class='active' >
+                        <td>{{p.package_id}}</td>
+                        <td>{{p.service_name}}</td>
+                        <td>{{p.name}}</td>
+                        <td>{{p.professional_name}}</td>
+                        <td>{{p.experience}} yrs </td>
+                        <td>&#x20b9;{{p.price | round(0)}} </td>
+                        <td>{{p.phone}}</td>     
+                        <td class="booking">
+                            <form action="{{ url_for('create_service_request') }}" method="POST">
+                                <input type="hidden" name="package_id" value="{{ p.package_id }}">
+                                <input type="hidden" name="professional_id" value="{{ p.professional_id }}">
+                                <input type="time" name="time" id="time"  required>
+                                <input type="date" name="date" id="date" required>
+                                <button type="submit" class="book_btn" >Book</button>
+                            </form>
+
+
+                        </td>
+                    </tr>
+                   
+                    
+                    {% endfor %}
+                </table>
+                  
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='search.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Search{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='summary.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+    <main>
+        <div class="greeting">
+            <h1>Here's your summary, {{username}}</h1>
+        </div>
+
+        <div class="summary_stats">
+            <div class="stat_card">
+                <h2>Total Bookings</h2>
+                <p>{{total_requests}}</p>
+            </div>
+            <div class="stat_card">
+                <h2>Avg Rating</h2>
+                <p> {% if avg_rating%}
+                    {{avg_rating|round(1)}}
+                    {% else %}
+                    0
+                    {% endif %}                
+                </p>
+            </div>
+            <div class="stat_card">
+                <h2>Earnings</h2>
+                <p>&#8377;
+                    {%if total_earnings%}
+                    {{total_earnings|round(0)}}
+                    {% else %}
+                    0
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+   
+       
+      
+
+    <div class="chart_contain">
+        <div class="charts">
+            <h2>Ratings</h2>
+            <canvas id="ratingsChart"></canvas>
+        </div>
+        <div class="charts">
+            <h2>Requests</h2>
+            <canvas id="requestsChart"></canvas>
+        </div>
+        <div class="charts">
+            <h2>Top Packages</h2>
+            <canvas id="pkgChart"></canvas>
+        </div>
+        
+    </div>
+
+        <script>
+
+        const pieChartConfig = {
+            type: 'pie',
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,  // legend for  pie chart
+                        position: 'top'
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false  
+            }
+        };
+
+
+        const chartConfig = {
+            type: 'bar',
+            options: {
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false,
+                        grid: {
+                            display: false
+                        },
+                        max: 5 //max x-axis
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                maintainAspectRatio: true,
+                responsive: true
+            }
+        };
+
+        // Ratings Chart
+        new Chart(document.getElementById('ratingsChart'), {
+            ...pieChartConfig,
+            data: {
+                labels: {{rating_labels | safe}},
+                datasets: [{
+                    data: {{rating_data}},
+                    backgroundColor: [
+                        '#f3f59c',
+                        '#ef8e75',
+                        '#aacb73',
+                        '#f7e98d',
+                        '#8bae6c'
+                    ],
+                    borderRadius: 7
+                }]
+            }
+        });
+
+
+        // Popular Requests Chart
+        new Chart(document.getElementById('requestsChart'), {
+            ...chartConfig,
+            data: {
+                labels: {{req_labels | safe}},
+                datasets: [{
+                    data: {{req_data}},
+                    backgroundColor: [
+                        '#8bae6c',
+                        '#f7e98d',
+                        '#8bae6c'
+                    ],
+                    borderRadius: 20
+                }]
+            }
+        });
+
+        // All Requests Chart
+        new Chart(document.getElementById('pkgChart'), {
+            ...chartConfig,
+            data: {
+                labels: {{pkg_labels | safe}},
+                datasets: [{
+                    data: {{pkg_data}},
+                    backgroundColor: [
+                        '#8bae6c',
+                        '#f7e98d',
+                        '#8bae6c'
+                    ],
+                    borderRadius: 20
+                }]
+            }
+        });
+
+      
+        </script>
+        
+
+    </main>
+
+{% endblock %}

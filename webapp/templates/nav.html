@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Qwix.it{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,700,0,-25" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+    {% block styles %}
+    {% endblock %}
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="qwix">
+            <a href="#">Qwix<span>.it</span></a>
+        </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu_btn">
+            <span class="material-symbols-rounded">menu</span>
+        </label>
+        <ul class="nav_links">
+            {% if session['userole'] == 'customer' %}
+            <li><a href="{{ url_for('cust_dash') }}">Home</a></li>
+            <li><a href="{{ url_for('cust_search') }}">Search</a></li>
+            <li><a href="{{ url_for('cust_summary') }}">Summary</a></li>
+            <li><a href="{{ url_for('cust_dash') }}#my_requests">My requests</a></li>
+            <li><a href="{{ url_for('cust_dash') }}#emergesec">Emergency</a></li>
+
+            {% elif session['userole'] == 'professional' %}
+            <li><a href="{{ url_for('pro_dash') }}">Home</a></li>
+            <li><a href="{{ url_for('pro_search') }}">Search</a></li>
+            <li><a href="{{ url_for('pro_summary') }}">Summary</a></li>
+            <li><a href="{{ url_for('pro_dash') }}#my_packages">Packages</a></li>
+            <li><a href="{{ url_for('pro_dash') }}#reviews">Reviews</a></li>
+            {% endif %}
+
+            {% if session['userole'] == 'admin' %}
+            <li style="margin-left:7rem;"><a href="{{ url_for('admin') }}">Home</a></li>
+            <li><a href="{{ url_for('admin') }}#summary">Summary</a></li>
+            <li><a href="{{ url_for('admin') }}#services_det">Services</a></li>
+            <li><a href="{{ url_for('admin') }}#s_requests">Requests</a></li>
+            <li><a href="{{ url_for('admin') }}#users_det">Users</a></li>
+            
+            {% endif %}
+
+        </ul>
+        <div class="nav_btns">
+            {% if session['userole'] == 'customer' %}
+            <div class="cust_nav_p">
+            <a class = "savedp" href="{{ url_for('saved_packages') }}">📗Saved</a>
+            <a class="btn profile" href="{{url_for('customer_profile', edit_p='v')}}"> | Profile</a>
+            </div>
+            {% elif session['userole'] == 'professional' %}
+            <a class="btn profile" href="{{ url_for('pro_profile', edit_p='v') }}">Profile</a>
+            {%else%}
+            <a class="btn profile" style="font-weight :bold ; "> ADMIN </a>
+            {%endif%}
+            <a href="{{ url_for('logout') }}" class="btn logout">Logout</a>
+            
+        </div>
+    </nav>
+
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

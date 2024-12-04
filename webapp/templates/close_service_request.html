@@ -1,0 +1,48 @@
+
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Customer Dashboard{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <main>
+        <div class="service_box">
+            <h2>{{name}}</h2>
+            <form action="" method="POST">
+            <div class="service_details">               
+                    
+                <span class="detail">Service Id : {{service_id}}</span>
+                <span class="detail">Professional : {{professional_name}} </span>
+                <span class="detail">Completed on : {{date_time}}</span>             
+                
+            </div>
+            <input type="hidden" name="package_id" value="">
+            <input type="hidden" name="professional_id" value="">
+            <p >Rating</p>
+            {% for i in range(1,6) %}
+            {{i}}
+            <input type="radio" name="rating" id="rating" value={{i}}>                     
+             {% endfor %}
+          
+             
+            <br>
+            <p>Feedback</p>
+            
+            <textarea name="feedback" id="feedback" cols="30" rows="1"></textarea>       
+
+            <div class="button_enclose">
+                <a href={{url_for('cust_dash')}} class="btn cancel" style="text-decoration:none;">Cancel</a>
+                <button type="submit" class="btn confirm">Confirm</button>
+            </div>
+        </form>
+        </div>
+    </main>
+{% endblock %}

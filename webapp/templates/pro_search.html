@@ -1,0 +1,134 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Search{% endblock %}
+
+{% block styles %}
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
+
+
+{% block content %}
+    <main>
+        <div class="search_enclose">
+            <form action="{{ url_for('pro_search') }}" method="GET">
+            
+                {% if searched_text%}
+                <input type="text" name="search_text" id="searchInput" placeholder={{searched_text}} class="search_inbox">
+                {% else %}
+                <input type="text" name="search_text" id="searchInput" placeholder="Search text" class="search_inbox">
+               
+                {% endif %}
+
+                <select  name="pkgs"  class="category_btn">
+                    {% if pkg_namef %}
+                    <option value="">{{pkg_namef}}</option>
+                    {% else %}
+                    <option value="">Package</option>
+                    {% endif %}
+                    {% for p in pkg_options%}
+                    <option value="{{p.package_id}}">{{p.name}}</option>
+                    {% endfor %}
+                    
+                </select>
+                <select  name="status" class="experience_btn">   
+                    {% if statusf %}
+                    <option value="">{{statusf}}</option>
+                    {% else %}
+                    <option value="">Status</option> 
+                    {% endif %}
+                    <option value="Requested">Requested</option>
+                    <option value="Accepted">Accepted</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Closed">Closed</option>
+                </select>
+                <select name="loc"  class="location_btn">
+                    {% if locf %}
+                    <option value="">{{locf}}</option>
+                    {% else %}
+                    <option value="">Location</option>
+                    {% endif %}
+                    <option value="Delhi">Delhi</option>
+                    <option value="Indore">Indore</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Address">Address</option>
+                </select>
+                <a href="{{ url_for('pro_search') }}" class="reset_btn">
+                    Reset
+                </a>
+               
+                   
+                    <button  type="submit" class="material-symbols-rounded search_btn">                                      
+                    search
+                    </button>
+    
+                    
+            </form>
+                
+        </div>
+        
+
+        <div class="table_enclose">
+            <table id="serviceTable" >
+                <thead>
+                    <tr>
+                        <th >ID</th>
+                        <th>Package</th>
+                        <th>Customer</th>
+                        <th>Phone</th>
+                        <th>Location</th>
+                        <th>Pincode</th>
+                        <th>Completion Date</th>
+                        <th> Status </th>
+                        <th> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        {% for p in search_data %}
+                        {%if p.status != 'Rejected' %}
+                    <tr class='active' >    
+                        <td>{{p.service_request_id}}</td>
+                        <td>{{p.package_name}}</td>
+                        <td>{{p.cust_name}}</td>
+                        <td>{{p.phone}}</td>
+                        <td>{{p.location}}</td>
+                        <td>{{p.pincode}}</td>
+                        <td>{{p.completion_date}}</td>
+                        <td> {% if p.status == 'Requested' or p.status == 'requested' %}
+                            <h5 class="pro_status" style="background-color:#faf4a7;">{{p.status}}</h5>
+                        {% elif p.status == 'Accepted' %}
+                            <h5 class="pro_status " style="background-color:#edad95;">{{p.status}}</h5>
+                        {% elif p.status == 'Completed' %}
+                            <h5 class="pro_status " style="background-color:#e4f5b8;">{{p.status}}</h5>
+                        {% elif p.status == 'Closed' %}
+                            <h5 class="pro_status   " style="background-color:#a4e0ae;">{{p.status}}</h5>
+                        {% endif %}
+                         </td>
+
+                        <td>
+
+                            {% if p.status == 'Requested' or p.status == 'requested' %}
+                            <button class="pro_book" onclick="window.location.href='{{ url_for('accept', service_request_id=p.service_request_id, status='Accepted') }}'">
+                                Accept</button>
+                            
+                            {% elif p.status == 'Accepted' %}
+                            <button class="pro_status" onclick="window.location.href=''">None</button>
+                            {% elif p.status == 'Completed' %}
+                            <button class="pro_book" onclick="window.location.href='{{ url_for('final_closing', service_request_id=p.service_request_id, status='Closed') }}'">Close</button>
+                            {% elif p.status == 'Closed' %}
+                            <button class="pro_status">None</button>
+                            {% endif %}
+
+                        </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                   
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='search.js') }}"></script>
+{% endblock %}

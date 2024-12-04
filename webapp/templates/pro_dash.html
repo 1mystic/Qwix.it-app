@@ -1,0 +1,287 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Customer Dashboard{% endblock %}
+
+{% block styles %}
+<link href="https://fonts.googleapis.com/css2?family=Brush+Script+MT&family=Pacifico&family=Dancing+Script&Lobster+Two&family=Great+Vibes&family=Satisfy&family=Allura&family=Sacramento&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='prodash.css') }}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<main>
+
+    <div class="username">
+        <h1 style="font-size: 3rem; margin-top: 3rem ;font-family: 'Pacifico', cursive; color : #7a7a7a;">
+            Welcome {{session['username']}}</h1>
+    </div>      
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash_message flash_{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+      
+   {% if packages %}
+    <!-- current jobs -->
+    
+    
+   
+     {% if jobs | length!=0 %}
+    
+
+    <div class="jobs">
+        <h1>Current Jobs</h1>
+    </div>
+
+   
+    <table id="serviceTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Package</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Location</th>
+                <th>Pincode</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+         
+            {% for job in jobs %}
+            <tr>
+                {% if job.status == 'Requested' %}
+                <td>{{job.service_request_id}}</td>
+                <td>{{job.package_name}}</td>
+                <td>{{job.customer_name}}</td>
+                <td>{{job.phone}}</td>
+                <td>{{job.location}}</td>
+                <td>{{job.pincode}}</td>
+                <td>{{job.date_time}}</td>
+                <td class = "book_btns">
+                    <a href="{{url_for('accept', service_request_id=job.service_request_id, status='Accepted')}}"
+                     class="book_btn">Accept</a>
+
+                    <a href="{{url_for('reject', service_request_id=job.service_request_id,
+                     status='Rejected')}}" class="book_btn reject">Reject</a>
+                </td>
+            </tr>
+                {%elif job.status=='Accepted'%}
+                <td>{{job.service_request_id}}</td>
+                <td>{{job.package_name}}</td>
+                <td>{{job.customer_name}}</td>
+                <td>{{job.phone}}</td>
+                <td>{{job.location}}</td>
+                <td>{{job.pincode}}</td>
+                <td>{{job.date_time}}</td>
+                <td> <button type="submit" class="assigned">Assigned</button> </td>
+            </tr>
+         
+                          
+            {% endif %}
+            {% endfor %}
+            
+
+            
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    {% else%}
+    <div class="jobs">
+        <h1>Current Jobs : </h1>        
+    </div>
+    
+    <div style= "border : none;"class="jobs">
+        <p>No current jobs </p>       
+    </div>
+    <br>
+    
+    
+
+
+    {% endif %}
+    
+
+
+    <!-- current packages   -->
+    <div id="my_packages" class="jobs">
+        <h1>Current Packages</h1>
+    </div>
+    
+    <!-- new package -->
+    
+        <a class="new_package" href="{{url_for('create_package')}}">New Package + </a>
+    
+ 
+
+    {% if packages %}
+    <table id="serviceTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for package in packages %}
+            <tr>
+                <td>{{package.package_id}}</td>
+                <td>{{package.name}}</td>
+                <td>{{package.price}}</td>
+                <td>{{package.description}}</td>
+                <td>{{package.duration}}</td>    
+                <td>
+                    <a href="{{url_for('delete_package', package_id = package.package_id)}}" class="book_btn reject">
+                        Delete
+                  </a>
+                  <a href="{{url_for('update_package', package_id = package.package_id)}}" class="book_btn">
+                        Update  
+                    </a>
+                </td>      
+            </tr>
+            {% endfor %}
+                
+            
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    
+
+    {% if jobs | length!=0 %}
+
+    <!-- completed jobs -->
+    <div class="jobs">
+        <h1 style="color : #a3453b ">Comlpleted Jobs</h1>
+
+    </div>
+
+    <table id="serviceTable">
+        <thead>
+            <tr>
+                <th >ID</th>
+                <th>Package</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Location</th>
+                <th>Pincode</th>
+                <th>Completion Date</th>
+                <th> Close </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for job in jobs %}
+            {% if job.status == 'Completed' %}
+            <tr>
+                <td>{{ job.service_request_id }}</td>
+                <td>{{ job.package_name }}</td>
+                <td>{{ job.customer_name }}</td>
+                <td>{{ job.phone }}</td>
+                <td>{{ job.location }}</td>
+                <td>{{ job.pincode }}</td>
+                <td>{{ job.date_time }}</td>
+                <td>
+                    <a class="book_btn"   
+                    value= "Closed"
+                    href="{{ url_for('final_closing', service_request_id=job.service_request_id, status='Closed') }}">
+                    CLOSE</a>
+                    
+                </td>  
+                
+                      
+
+                </td>
+            </tr>
+            {% elif job.status == 'Closed' %}
+            <tr>
+                <td>{{ job.service_request_id }}</td>
+                <td>{{ job.package_name }}</td>
+                <td>{{ job.customer_name }}</td>
+                <td>{{ job.phone }}</td>
+                <td>{{ job.location }}</td>
+                <td>{{ job.pincode }}</td>
+                <td>{{ job.date_time }}</td>
+                <td> <button class="assigned">Closed</button></td>
+            
+            {% endif %}
+            {% endfor %}
+            
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    {% endif %}
+
+    <!-- reviews -->
+    <div class="jobs" id = "reviews">
+        <h1 style="color : #a3453b ">Reviews</h1>
+
+    </div>
+    <br>
+    <div class="reviews_sec">      
+        
+        {% for review in reviews %}
+        
+        <div class="review">
+            <p class="review-text">
+                <div class="customer-name"> Request ID - {{review.service_id}} </div>
+                <br>
+                {{review.rating}}
+                {% for i in range(review.rating) %}
+                                <span>⭐</span>                     
+                {% endfor %}                
+                 <br>
+                {{review.comment}}
+            </p>
+            <div class="customer-name"> ~ {{review.customer_name}} </div>
+        </div>
+        {% endfor %}    
+        {% if reviews | length == 0 %}
+                No reviews yet
+        {% endif %}
+
+    </div>    
+
+    {% endif %}
+
+
+
+    {% else %}
+    <div class="">
+        <br>   
+        <span>     
+        <h1 style="display : inline-block ; "> Create a new package to get started</h1>
+        </span>
+       
+        <span>
+        <a class="new_package" href="{{url_for('create_package')}}" >New Package + </a>
+        </span>
+
+    </div>
+    
+    
+
+    {% endif %}
+    
+
+
+
+</main> 
+    
+      
+
+   
+{% endblock %}

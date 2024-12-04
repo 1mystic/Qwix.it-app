@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='land.css') }}">
+    <title>Qwix.it</title>
+  </head>
+  <body>
+     <nav>
+      <div class="nav__logo">
+          <a href="#" class="qwix"><span >Qwix</span>.it</a>
+      </div>
+      
+        <a class="btn_join" href="{{ url_for('register_pro')}}"> Join as a professional </a> 
+    </nav>
+        
+    <header class="header_container">
+      <div class="header_img">
+        <img 
+         src="{{ url_for('static', filename='assets/v3.jpg') }}" alt="header" />     
+        <!-- home1-->
+        
+      </div>
+
+      
+      <div class="header__content">
+              
+        
+        <h1> Your Home, Your Rules </h1>
+        
+        <span style="font-size: 3em; " >We'll handle the rest!</span> 
+        <br> <br>
+        <p>
+          Worried about the safety and security of your home? 
+          Our experienced staff is trained to handle your belongings 
+          with care and respect. We prioritize your peace of mind and 
+          take every precaution to protect your property.
+        </p>
+          
+          
+        <a class="loginb" 
+        href="{% if session.get('logged_in') %}
+                 {% if session.get('userole') == 'customer' %}
+                   {{ url_for('cust_dash') }}
+                 {% elif session.get('userole') == 'professional' %}
+                   {{ url_for('pro_dash') }}
+                 {% elif session.get('userole') == 'admin' %}
+                   {{ url_for('admin') }}
+                 {% else %}
+                   {{ url_for('login') }}
+                 {% endif %}
+               {% else %}
+                 {{ url_for('login') }}
+               {% endif %}"
+        style="background-color: #59753f; 
+               display: inline-block; 
+               margin-left: 0; 
+               padding: 0.18em 1em; 
+               border-radius: 0.5em; 
+               font-size: 3rem; 
+               color: white; 
+               text-decoration: none;">
+               
+            <b>{% if session.get('logged_in') %}Home➚ {% else %}Login{% endif %}</b>
+      </a>
+          <br> <br>
+
+          <div class="bar">
+            © 2024 Qwix.it
+          </div>
+      </div>
+    </header>
+  
+  </body>
+</html>

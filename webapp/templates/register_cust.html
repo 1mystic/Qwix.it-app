@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <title>Qwix - Sign Up</title>
+</head>
+<body>
+    <div class="enclose">
+        <div class="left_signup">
+
+            <div class="headline">
+                <h1>Just Say </h1> <h1></h1> <h1 class="orange_text">Qwix</h1><h1>.it</h1>
+            </div>
+            <img src="{{ url_for('static', filename='registern.png') }}" alt="Welcome image" class="image">
+        </div>
+
+
+        <div class="right_signup">
+
+            <form action="{{ url_for('register_cust')}}" method="POST" class="signup_form">
+
+                <h2 class="title">SIGN UP - <span class="orang_text" id="signup-type">Customer</span></h2>
+
+                <div class="selection_bar">
+                    <a href="#" class="role active" id="customer-role" style=" margin-right : 1.5rem;">
+                        Customer</a>
+                    <a href="{{ url_for('register_pro')}}" class="role" id="professional-role">Professional</a>
+                </div>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="flash_message flash_{{ category }}">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
+                {% endwith %} 
+
+
+                <input type="text" name="username" placeholder="Full Name" class="input_bar" minlength="3" required>
+                <input type="email" name="email" placeholder="Email" class="input_bar" required>
+                <input type="password" name="password" placeholder="Password" class="input_bar" minlength="6" required>
+                <input type="text" name="address" placeholder="Address" class="input_bar" required>
+                <input type="text" name="pincode" placeholder="Pincode" class="input_bar" pattern="\d{6}" minlength="6" maxlength="6" required>
+                <input type="hidden" name="role" value="customer">
+
+                <button type="submit" class="btn">Sign up</button>
+                <p class="login_link">Already have an account? <a href="{{ url_for('login')}}">Log in</a></p>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>

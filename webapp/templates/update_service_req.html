@@ -1,0 +1,43 @@
+
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Customer Dashboard{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='update.css') }}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <main>
+        <div class="service_box">
+            <h2>{{name}}</h2>
+            <form action="" method="POST">
+            <div class="service_details">               
+                    
+                <span class="detail">Service Id : {{service_request}}</span>
+                <span class="detail">Professional : {{professional_name}} </span>
+                <span class="detail">Schedule : {{date_time}}</span>             
+                
+            </div>
+            <input type="hidden" name="package_id" value="">
+            <input type="hidden" name="professional_id" value="">
+            <p>Time</p>
+            <input type="time" id="time" name="time" required style="  margin-right : 2rem;">
+            <p>Date</p>
+            <input type="date" id="date" name="date" required>
+           
+        
+
+            <div class="button_enclose">
+                <button type="submit" class="btn cancel">Cancel</button>
+                <button type="submit" class="btn confirm">Confirm</button>
+            </div>
+        </form>
+        </div>
+    </main>
+{% endblock %}

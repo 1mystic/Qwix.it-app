@@ -1,0 +1,139 @@
+{% extends 'nav.html'%}
+
+{% block title %}Qwix.it - Search{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='profileX.css') }}"> 
+{% endblock %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+    <div class="flash_message flash_{{ category }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<main>
+    <div class="the_profile_enc">
+
+        <form action="{{url_for('pro_profile', edit_p="v")}}" method="post"  enctype="multipart/form-data">
+        <div class="top_section">
+                        
+            {% if not edit_enable%}
+            <div class="pro_pic">
+                <img src="{{ url_for('static', filename='assets/pics/'+pro_data.name+'.png') }}" alt="{{pro_data.name}}" class="pro_pic" id="profilePic">
+            </div>
+            
+            {% elif edit_enable%}
+            
+            <input name="profile_pic" type="file" accept=".png"  class="upload">
+            
+        
+        {% endif %}      
+                      
+        <div class="service_badge">{{pro_data.service}}  </div>
+        
+            <div class="rat_badge">⭐{{pro_data.rating}} stars 
+                 </div>
+            <div class="rev_badge">
+                 {{pro_data.rev_count}} reviews
+            </div>  
+            <div class="xp_badge">{{pro_data.xp}} yrs xp</div>
+           
+        </div>
+
+       
+        <div class="main_content">
+            <div class="user_detail">
+                
+                <div class="detail_label">Name</div>
+                {% if not edit_enable%}
+                <div class="detail_value">{{pro_data.name}}</div>
+                {% elif edit_enable%}
+                (No trailing spaces)
+                <input name="pro_name" type="text" 
+                class="dinput" 
+                pattern="[^ ](?:.*[^ ])?"
+                value="{{pro_data.name}}">
+                {% endif %}
+            </div>
+
+            <div class="user_detail">
+                {% if not edit_enable%}
+                <div class="detail_label">Email</div>
+                <div class="detail_value">{{pro_data.email}}</div>
+                {% elif edit_enable%}
+                {% endif %}
+            </div>
+            
+            <div class="user_detail">
+                
+                <div class="detail_label">Address</div>
+                {% if not edit_enable%}
+                <div class="detail_value">{{pro_data.address}}</div>
+                {% elif edit_enable%}
+                <input type="text" name="pro_add" class="dinput" value="{{pro_data.address}}">
+                {% endif %}
+            </div>
+            
+            <div class="user_detail">
+               
+                <div class="detail_label">Pincode</div>
+                {% if not edit_enable%}
+                <div class="detail_value">{{pro_data.pincode}}</div>
+                {% elif edit_enable%}
+                <input type="text" name="pro_pincode" class="dinput" 
+                pattern="\d{6}" minlength="6" maxlength="6"
+                value="{{pro_data.pincode}}">
+                {% endif %}
+            </div>
+            
+                        
+            <div class="user_detail">
+                
+                <div class="detail_label">Contact Number</div>
+                {% if not edit_enable%}
+                <div class="detail_value">+91 {{pro_data.phone}}</div>
+                {% elif edit_enable%}
+                <input type="text" name="pro_phone" class="dinput"
+                pattern="\d{10}" minlength="10" maxlength="10"
+                value="{{pro_data.phone}}">
+                {% endif %}
+
+            </div>
+
+            <div class="user_detail">
+                
+                <div class="detail_label" style="display:inline-block"></div>
+                <a style="color : #3967a9; font-weight:bold; display: inline-block;"
+                href="{{ url_for('static', filename='docs/' + pro_data.name|replace(' ', '_') + '.pdf') }}" target="_blank">View Document ➚</a>
+                </div>
+            
+            <div class="button-group">
+                {% if not edit_enable and not view_only%}
+                <a class="edit_btn" href="{{url_for('pro_profile', edit_p="edit")}}"> Edit Profile </a>
+
+                {% elif edit_enable%}
+                
+                    <button type="submit" class="edit_btn"> Save Profile </button>
+                {% elif view_only%}
+                {% if role == 'customer'%}
+                <a class="edit_btn" href="{{url_for('cust_dash')}}">Back</a>   
+                {% elif role == 'admin'%}
+                <a class="edit_btn" href="{{url_for('admin')}}">Back</a>   
+                {% endif %}                            
+                {% endif %}
+            </form>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+</html>
+{% endblock %}

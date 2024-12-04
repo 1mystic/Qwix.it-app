@@ -1,0 +1,565 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Admin{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,200" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+{% endblock %}
+
+{% block content %} 
+    <main>
+        <div class="sidebar">
+            <form action="{{ url_for('admin') }}" method="GET">
+            <div class="search-box">
+                <input name="search_text" type="text" placeholder="Search">
+               
+
+                
+                
+            </div>
+            
+           
+            <select  name="service_f"  class="sidebar-btn">
+                <option value="">Category</option>
+                {% for s in service_cat %}
+                <option value="{{s.service_name}}">{{s.service_name}}</option>
+                {% endfor %}
+
+            </select>
+            <select  name="price_f"  class="sidebar-btn">
+                <option value="">Price</option>
+                <option value="500">0-500</option>
+                <option value="1000">500-1000</option>
+                <option value="1500">1000-1500</option>
+            </select>
+           
+            <select name="loc"  class="sidebar-btn">
+                <option value="">Location</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Indore">Indore</option>
+                <option value="Bangalore">Bangalore</option>
+            </select>
+
+            <select  name="except" class="sidebar-btn except"> 
+                <option value="">Exclude</option>  
+                <option value="customer">Customer</option>
+                <option value="professional">Professional</option>                             
+                <option value="services">Services</option>
+                <option value="packages">Packages</option>
+                <option value="requests">Requests</option>                  
+                
+            </select>
+
+            <button  type="submit" class="material-symbols-rounded search_btn">                                      
+                search
+               </button>
+            
+               <a href="{{ url_for('admin') }}" class="reset_btn">
+                Reset
+            </a>
+        </form>
+            
+        </div>
+
+        <div class="content" id="summary">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="flash_message flash_{{ category }}">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+            {% endwith %}
+            
+
+            <div class="stats_grid">
+                <div class="stat_card">
+                    <h3>Total Users</h3>
+                    <p>{{total_users}}</p>
+                </div>
+                <div class="stat_card">
+                    <h3>Platinum users</h3>
+                    <p>{{plat_users}}</p>
+                </div>
+                <div class="stat_card">
+                    <h3>Total Professionals</h3>
+                    <p>{{total_professionals}}</p>
+                </div>
+                <div class="stat_card">
+                    <h3>Total Services</h3>
+                    <p>{{total_services}}</p>
+                </div>
+                <div class="stat_card">
+                    <h3>Total Requests</h3>
+                    <p>{{total_service_requests}}</p>
+                </div>
+            
+                
+                <div class="stat_card">
+                    <h3>Closed Requests</h3>
+                    <p>{{closed_requests}}</p>
+                </div>
+                <div class="stat_card">
+                    <h3>Pending Requests</h3>
+                    <p>{{pending_services}}</p>
+                </div>
+                <div class="stat_card">
+                    <h3>Total Revenue</h3>
+                    <p>&#8377{% if total_revenue%}
+                         {{total_revenue}}
+                            {% else %}
+                            0
+                            {% endif %}
+                    </p>
+                </div>
+                
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+            
+            <div class="chart_contain">
+                <div class="charts">
+                    <h2>Ratings</h2>
+                    <canvas id="ratingsChart"></canvas>
+                </div>
+                <div class="charts">
+                    <h2>Package Ratings</h2>
+                    <canvas id="serviceChart"></canvas>
+                </div>
+                <div class="charts">
+                    <h2>Requests</h2>
+                    <canvas id="requestsChart"></canvas>
+                </div>
+                
+            </div>
+        
+            <script>
+    
+            const pieChartConfig = {
+                type: 'pie',
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,  // legend 
+                            position: 'top',
+                            align: 'start',
+                            labels: {
+                                boxWidth: 20, // Width of  box next to legend 
+                                padding: 15
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false  
+                }
+            };
+    
+    
+            const chartConfig = {
+                type: 'bar',
+                options: {
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false,
+                            grid: {
+                                display: false
+                            },
+                            max: 5 //  x-axis max val
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    maintainAspectRatio: true,
+                    responsive: true
+                }
+            };
+    
+            // Ratings Chart
+            new Chart(document.getElementById('ratingsChart'), {
+                ...pieChartConfig,
+                data: {
+                    labels: {{ratings_labels | safe}},
+                    datasets: [{
+                        data: {{ratings_data}},
+                        backgroundColor: [
+                            '#f3f59c',
+                            '#ef8e75',
+                            '#aacb73',
+                            '#f7e98d',
+                            '#8bae6c'
+                        ],
+                        borderRadius: 10
+                    }]
+                }
+            });
+            
+            // Service Ratings Chart
+            new Chart(document.getElementById('serviceChart'), {
+                ...pieChartConfig,
+                data: {
+                    labels: {{pkg_labels | safe}},
+                    datasets: [{
+                        data: {{pkg_data}},
+                        backgroundColor: [
+                            '#ef8e75',
+                            '#f7e98d',
+                            '#8bae6c',
+                            '#f7e98d',
+                            '#8bae6c'
+                        ],
+                        borderRadius: 10
+                    }]
+                }
+            });
+    
+            //All Requests Chart
+            new Chart(document.getElementById('requestsChart'), {
+                ...chartConfig,
+                data: {
+                    labels: {{req_labels | safe}},
+                    datasets: [{
+                        data: {{req_data}},
+                        backgroundColor: [
+                            '#aacb73',
+                            '#f7e98d',
+                            '#ef8e75'
+                        ],
+                        borderRadius: 20
+                    }]
+                }
+            });
+    
+            
+            </script>
+
+
+
+            <div class="user_data" > 
+                <div class="new-professionals">
+                    <h2>New professionals :</h2>
+                    {% if professionals|length == 0 %}
+                        <p>No new professionals</p>
+                    {%else%}
+                    <table >
+                        <thead>
+                            <tr>
+                                <th> ID </th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Pincode</th>
+                                <th>Service</th>
+                                <th>Price</th>
+                                <th>Doc</th>
+                                <th>Location</th>
+                                <th style="padding-left: 5rem">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for professional in professionals %}
+                                <td>{{professional.professional_id}}</td>
+                                <td>{{professional.name}}</td>
+                                <td>{{professional.email}}</td>
+                                <td>{{professional.contact}}</td>
+                                
+                                <td>{{professional.pincode}}</td>
+                                <td>{{professional.service}}</td>
+                                <td>&#x20b9 {{professional.price}}</td>
+                                <td >
+                                    <a style="color : #3967a9; font-weight:bold;"
+                                     href="{{ url_for('static', filename='docs/' + professional.name|replace(' ', '_') + '.pdf') }}" target="_blank">View</a>
+                                </td>
+                                <td>{{professional.address}}</td>
+                                <td class = "book_btns">
+                                
+                                    <form action="{{url_for('approve_professional')}}" method='POST'>
+                                        <input type="hidden" name="professional_id" value="{{professional.professional_id}}">
+                                        <input type="hidden" name="status" value="Accepted">
+                                        <button type="submit" class="book_btn">Accept</button>
+                                    </form>
+                
+                                    <form action="{{url_for('reject_request')}}" method='POST'>
+                                        <input type="hidden" name="professional_id" value="{{professional.professional_id}}">
+                                        <input type="hidden" name="status" value="Rejected">
+                                        <button type="submit" class="book_btn reject">Reject</button>
+                                    </form>
+                                </td>
+                            </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+                
+                <div class="services" id="services_det">
+                    <h2>Services</h2>
+                    <a class="new-btn" href="{{url_for('create_service')}}">New +</a>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Base price</th>
+                                <th>Desccription</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for service in service_details %}
+                                <td>{{service.service_id}}</td>
+                                <td>{{service.service_name}}</td>
+                                <td>&#x20b9 {{service.base_price}}</td>
+                                <td>{{service.description}}</td>
+                                <td>{{service.category}}</td>
+                                <td class = "book_btns">
+                                <a href="{{url_for('delete_service', service_id = service.service_id)}}" class="book_btn reject">
+                                      Delete
+                                </a>
+                                <a href="{{url_for('update_service', service_id = service.service_id)}}" class="book_btn">
+                                      Update
+                                </a>
+                                </td>
+                                
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="packages">
+                    <h2>Service Packages</h2>
+                    {% if packages|length == 0 %}
+                    <p>No packages</p>
+                    {%else%}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Service</th>
+                                <th>Professional</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Duration</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for p in packages %}
+                                <td>{{p.package_id}}</td>
+                                <td>{{p.package_name}}</td>
+                                <td>{{p.service_name}}</td>
+                                <td>{{p.professional_name}}</td>
+                                <td>&#x20b9 {{p.price}}</td>
+                                <td>{{p.description}}</td>
+                                <td>{{p.duration}}</td>
+                                <td class = "book_btns">
+                                <a href="{{url_for('flag_package', package_id = p.package_id)}}" class="book_btn reject">
+                                      Flag
+                                </a>
+                                <a href="{{url_for('delete_package', package_id = p.package_id)}}" class="book_btn reject">
+                                      Delete
+                                </a>
+                                </td>
+                                
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+
+                <p id ="s_requests"> </p>
+                <div class="requests">
+                    <h2>Service Requests</h2>
+                    {% if service_requests_details|length == 0 %}
+                    <p>No requests yet</p>
+                    {%else%}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Service</th>
+                                <th>Package </th>
+                                <th>Customer</th>
+                                <th>Professional</th>
+                                <th>Request Date</th>
+                                <th>Completion</th>
+                                <th>Price</th>
+                                <th>Location</th>
+                                <th>Rating</th>
+                                <th> Status </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for req in service_requests_details %}
+                                <td>{{req.service_request_id}}</td>
+                                <td>{{req.service_name}}</td>
+                                <td>{{req.package}}</td>
+                                <td>{{req.customer}}</td>
+                                <td>{{req.professional}}</td>
+                                <td>{{ req.date_of_req.strftime('%Y-%m-%d') }}</td>
+                                <td>{{req.date_of_completion}}</td>
+                                <td>&#x20b9 {{req.price}}</td>
+                                <td>{{req.location}}</td>
+                                <td>{{req.rating}}</td>
+                                
+
+                                <td style="font-weight : 700;">
+                                {% if req.status == 'Requested' or req.status == 'requested' %}
+                                    <h5 class="admin_status" style="background-color:#faf4a7;">{{req.status}}</h5>
+                                {% elif req.status == 'Accepted' %}
+                                    <h5 class="admin_status " style="background-color:#edad95;">{{req.status}}</h5>
+                                {% elif req.status == 'Completed' %}
+                                    <h5 class="admin_status " style="background-color:#e4f5b8;">{{req.status}}</h5>
+                                {% elif req.status == 'Closed' %}
+                                    <h5 class="admin_status   " style="background-color:#a4e0ae;">{{req.status}}</h5>
+                                {% elif req.status == 'Rejected' %}
+                                <h5 class="admin_status " style="background-color:#d96c68; color : white;">{{req.status}}</h5>
+                                {% endif %}
+                                 </td>
+                                
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+
+                
+                <div class="verified-professionals" id = "users_det">
+                    <h2>Verified Professionals</h2>
+                    {% if verified_professionals|length == 0 %}
+                    <p>No approved professionals</p>
+                    {%else%}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Location</th>
+                                <th>Pincode</th>
+                                <th>Service</th>
+                                <th>Base Price </th>
+                                <th>Doc</th>
+                                <th >Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for professional in verified_professionals %}
+                                <td> <a style="text-decoration : none;color: inherit; font-weight: 550;" 
+                                    href="{{ url_for('pro_profile', edit_p= professional.name) }}">
+                                    {{professional.name}}➚
+                                    </a>
+                                </td>
+                                <td>{{professional.email}}</td>
+                                <td>{{professional.contact}}</td>
+                                <td>{{professional.address}}</td>
+                                <td>{{professional.pincode}}</td>
+                                <td>{{professional.service}}</td>
+                                <td>&#x20b9 {{professional.price}}</td>
+                                <!--doc-->
+                                <td> <a style="color : #3967a9; font-weight:bold;"
+                                    href="{{ url_for('static', filename='docs/' + professional.name|replace(' ', '_') + '.pdf') }}" target="_blank">View</a>
+                               </td>
+                               
+                                <td class = "book_btns">
+                                <form action="{{url_for('block_professional')}}" method='POST'>
+                                    <input type="hidden" name="professional_id" value="{{  professional.professional_id  }}">
+                                    <input type="hidden" name="status" value="Rejected">
+                                    <button type="submit" class="book_btn reject">Block</button>
+                                </form>
+                            </td>
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+
+
+                <div class="verified-professionals" id = "users_det">
+                    <h2>Customers</h2>
+                    {% if customers_data|length == 0 %}
+                    <p>No customers yet</p>
+                    {%else%}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Location</th>
+                                <th>Pincode</th>
+                                <th>Type</th>
+                                <th >Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for c in customers_data %}
+                                <td>{{c.customer_id}}</td>
+                                <td>
+                                    <a style="text-decoration : none;
+                                    color: inherit; font-weight: 550;"
+                                    href="{{ url_for('customer_profile', edit_p= c.customer_id) }}">
+                                    {{c.name}}➚
+                                    </a>
+
+                                
+                                </td>
+                                <td>{{c.email}}</td>
+                                <td>{{c.phone}}</td>
+                                <td>{{c.address}}</td>
+                                <td>{{c.pincode}}</td>
+                                <td>{{c.type}}</td>                                
+                                <td class = "book_btns">
+                                
+                                {%if c.is_approved == 'Yes' %}
+                                <a href="{{url_for('block_customer', customer_id = c.customer_id)}}" class="book_btn reject">
+                                      Block </a>
+                                {%else%}
+                                <a href="{{url_for('unblock_customer', customer_id = c.customer_id)}}" class="book_btn ">
+                                Unblock </a>
+                                </td>
+                                {%endif%}
+                                
+                            </td>
+                            </tr>
+                                {% endfor %}
+                            </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+
+
+            </div>
+            
+        </div>
+
+        
+    </main>
+
+    
+    
+    
+{% endblock %}

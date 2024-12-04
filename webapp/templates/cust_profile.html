@@ -1,0 +1,99 @@
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Customer Profile{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='profileX.css') }}"> 
+{% endblock %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+    <div class="flash_message flash_{{ category }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<main>
+    <div class="the_profile_enc">
+        <form action="{{ url_for('customer_profile', edit_p='v') }}" method="post" enctype="multipart/form-data">
+            <div class="top_section">
+                <div class="role_badge">{{cust_data.type}}</div>
+                {% if not edit_enable %}
+                <div class="pro_pic">
+                    <img src="{{ url_for('static', filename='assets/pics/custp/' + cust_data.name + '.png') }}" alt="{{ cust_data.name }}" class="pro_pic" id="profilePic">
+                </div>
+                {% elif edit_enable %}
+                <input name="profile_pic" type="file" accept=".png" class="upload">
+                {% endif %}
+                <h2>{{ cust_data.name }} Here </h2>
+            </div>
+            <div class="main_content">
+                <div class="user_detail">
+                    <div class="detail_label">Name</div>
+                    {% if not edit_enable %}
+                    <div class="detail_value">{{ cust_data.name }}</div>
+                    {% elif edit_enable %}
+                    (No trailing spaces)
+                    <input name="cust_name" type="text"
+                     class="dinput" 
+                     pattern="[^ ](?:.*[^ ])?"
+                     value="{{ cust_data.name }}">
+                    {% endif %}
+                </div>
+                <div class="user_detail">
+                    {% if not edit_enable %}
+                    <div class="detail_label">Email</div>
+                    <div class="detail_value">{{ cust_data.email }}</div>
+                    {% elif edit_enable %}
+                    {% endif %}
+                </div>
+                <div class="user_detail">
+                    <div class="detail_label">Address</div>
+                    {% if not edit_enable %}
+                    <div class="detail_value">{{ cust_data.address }}</div>
+                    {% elif edit_enable %}
+                    <input type="text" name="cust_add" class="dinput" value="{{ cust_data.address }}">
+                    {% endif %}
+                </div>
+                <div class="user_detail">
+                    <div class="detail_label">Pincode</div>
+                    {% if not edit_enable %}
+                    <div class="detail_value">{{ cust_data.pincode }}</div>
+                    {% elif edit_enable %}
+                    <input type="text" name="cust_pincode" class="dinput"
+                    pattern="\d{6}" minlength="6" maxlength="6"
+                     value="{{ cust_data.pincode }}">
+                    {% endif %}
+                </div>
+                <div class="user_detail">
+                    <div class="detail_label">Contact Number</div>
+                    {% if not edit_enable %}
+                    <div class="detail_value">+91 {{ cust_data.phone }}</div>
+                    {% elif edit_enable %}
+                    <input type="text" name="cust_phone" class="dinput" 
+                    pattern="\d{10}" minlength="10" maxlength="10"
+                    value="{{ cust_data.phone }}">
+                    {% endif %}
+                </div>
+              
+                <div class="button-group">
+                    {% if admin %}
+                    <a class="edit_btn" href="{{ url_for('admin') }}"> Back </a>
+                    {% else %}
+                    {% if not edit_enable%}
+                    <a class="edit_btn" href="{{ url_for('customer_profile', edit_p='edit') }}"> Edit Profile </a>
+                    {% elif edit_enable %}
+                    <button type="submit" onclick class="edit_btn"> Save Profile </button>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

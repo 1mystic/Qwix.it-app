@@ -1,0 +1,265 @@
+
+
+
+{% extends 'nav.html' %}
+
+{% block title %}Qwix.it - Customer Dashboard{% endblock %}
+
+{% block styles %}
+<link href="https://fonts.googleapis.com/css2?family=Brush+Script+MT&family=Pacifico&family=Dancing+Script&Lobster+Two&family=Great+Vibes&family=Satisfy&family=Allura&family=Sacramento&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+       
+    <link rel="stylesheet" href="{{ url_for('static', filename='cust.css') }}">
+    
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+   
+    
+
+    <div class="username">
+        <h1>Welcome {{username}}</h1>
+    </div>      
+      
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="flash_message flash_{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- services booked-->
+
+    {% if booked_data| length != 0 %}
+
+    <div class="booked_head" style="margin-left: 12rem;">
+        <h1>Booked Services</h1>
+    </div>
+
+    <div class="service_container">
+        {% for data in booked_data %}
+        {% if data.status != 'Completed'%}
+        <div class="service_card">
+            <h5 class="service_title">{{data.service_name}}</h5>
+    
+            <div class="service_body">                
+                {% if data.status == 'Requested' %}
+                    <p id="status" value="{{ data.status }}" style="color:  #615d24; background : #ede8a4;" >{{ data.status }}</p>
+                {% elif data.status == 'Accepted' %}
+                    <p id="status" value="{{ data.status }}" style="color:  #7d9654; background : #f3f8e8;" >{{ data.status }}</p>
+               
+                {% elif data.status == 'Rejected' %}
+                    <p id="status" value="{{ data.status }}">Declined</p>
+                {% endif %}          
+                
+                <p><span class="material-symbols-rounded">
+                    category
+                    </span> <span class="sdetail">
+                      {{ data.service_category }}</span> 
+                    </p>
+
+                <p> <span class="material-symbols-rounded">
+                    person_apron
+                    </span>
+                    <span class="sdetail">
+                        {% set pro_name = data.professional_name%}
+                    Pro: <a style="text-decoration : none;color: inherit; font-weight: 550;" 
+                            href="{{ url_for('pro_profile', edit_p= pro_name) }}">
+                         {{data.professional_name}}➚ </a>                    
+                    </span></p>
+                <p> <span class="material-symbols-rounded">
+                    timelapse
+                    </span>
+                    <span class="sdetail">
+                    Experience: {{ data.experience }} yrs</span></p>
+                <p><span class="material-symbols-rounded">
+                    event
+                    </span>
+                    <span class="sdetail">
+                     {{ data.date_time }}</span></p>
+                <p><span class="material-symbols-rounded">
+                    call
+                    </span>
+                    <span class="sdetail">
+                    {{ data.phone }} </span></p>                             
+                                               
+                <form action="{{ url_for('update_service_request', service_request_id=data.service_request_id, status='requested') }}" method="POST">
+                </form>
+                
+            </div>
+
+            <a class="book_btn" id="cancel_btn" value="Cancelled" 
+            href="{{ url_for('cancel_service_request', service_request_id=data.service_request_id) }}">
+                Cancel
+            </a>
+
+            
+            <a class="book_btn"                         
+            id="cancel_btn" value= "Update"
+            href="{{ url_for('update_service_request', service_request_id=data.service_request_id, status='update') }}"
+            {% if data.status == 'Rejected' %}
+            style="background-color: #efd24cab;"
+            {% endif %}>   
+            Update </a>
+
+            {% if data.status == 'Accepted' %}
+            <a class="book_btn"   
+            style="background-color: #8eebbf; display:block;"             
+            id="close_btn" value= "Close"
+            href="{{ url_for('close_service_request', service_request_id=data.service_request_id, status='Completed') }}">
+            CLOSE</a>
+            {% else %}            
+            {% endif %}        
+        </div>
+        {% endif %}        
+        {% endfor %}
+    </div>
+    {% else %}    
+    {% endif %}
+
+    <!-- available services-->    
+
+    <div class="head">
+        {%for s in services_available%}
+        <!-- First card -->
+        <div class="service">
+            <a href="{{ url_for('packages', service_id = s.service_id) }}">
+            <div class="service_text">
+                {{s.service_name}}</div>
+            <div class="icon">
+                <img src="{{ url_for('static', filename='assets/icons/'+ s.service_name | replace(' ','_') +'.png') }}" alt="plumber" />
+            </div>
+            </a>
+            
+        </div>
+        {% endfor %}
+    
+     
+    </div>
+    
+    <!-- platinum plan -->
+ 
+    <!-- banner-->
+    <div class="banner">
+        {% if usertype == 'normal'%}
+        <img style=" margin : 0rem 1rem 0rem 1rem; width: 5rem; height: 5rem;"
+        src="{{ url_for('static', filename='assets/icons/plat.png') }}" alt="platinum" />
+        <h1> <a href="{{url_for('platinum')}}" > Get our Platinum plan </h1>
+        {% elif usertype == 'Platinum' %}
+        <img style=" margin : 0rem 1rem 0rem 1rem; width: 5rem; height: 5rem;"
+        src="{{ url_for('static', filename='assets/icons/plat.png') }}" alt="platinum" />
+        <h1> <a href="#platsec" >Platinum Active </a> </h1>
+        {% endif %}
+    </div>
+    
+    <!-- platinum services-->
+     <p id="platsec"> </p> 
+    <div class = "section_service premium_section">
+       
+        <span class="material-symbols-rounded plat_icon">workspace_premium</span>
+        <div class="premium_head">            
+            <h1>Platinum </h1> 
+        </div>
+
+        <div class="premium">
+            <!-- First card -->
+            {%for s in platinum_services_available%}
+           
+            <div class="service">
+                {% if usertype == 'Platinum'%}
+                <a href="{{ url_for('packages', service_id = s.service_id) }}">
+                <div class="service_text">
+                    {{s.service_name|replace("Premium", "")}}</div>
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='assets/icons/'+s.service_name | replace(' ','_') +'.png') }}" alt={{s.service_name}} />
+                </div>
+                </a>
+                {% else %}
+                <a href="{{url_for('platinum')}}">
+                    <div class="service_text">
+                        {{s.service_name|replace("Premium", "")}}</div>
+                    <div class="icon">
+                        <img src="{{ url_for('static', filename='assets/icons/'+s.service_name | replace(' ','_') +'.png') }}" alt={{s.service_name}} />
+                    </div>
+                </a>
+                {% endif %}                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <!-- emergency -->
+    <p id="emergesec"> </p> 
+     <div class = "section_service">
+        <span class="material-symbols-rounded plat_icon">emergency_home</span>
+        <div class="emergency_head">
+            <h1>Emergency</h1>
+        </div>
+
+    
+        <div class="emergency">
+            <!-- First card -->
+            {%for s in emergency_services_available%}
+       
+            <div class="etop">
+                <a href="{{ url_for('packages', service_id = s.service_id) }}">
+                <div class="etop_text">
+                    {{s.service_name | replace('Emergency','')}}</div>
+                <div class="icon">
+                    <img src="{{ url_for('static', filename='assets/icons/'+s.service_name|replace(" ","_")+'.png') }}" alt={{s.service_name|replace(" ","_")}} />
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    
+
+    
+    <!-- service hiostory table-->
+    
+    <h1 style = "margin: 4rem auto 0 6.2rem;" >Service History</h1>
+    <table class="table">
+        <thead id = "my_requests">
+            <tr>
+                <th style=" border-top-left-radius: 1rem;">ID</th>
+                <th>Service</th>
+                <th>Professional</th>
+                <th>Booking</th>
+                <th>Completion</th>
+                <th>phone</th>
+                <th>status</th>
+                <th style = " border-top-right-radius: 1rem;">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for data in service_history %}
+            <tr class='active'>
+                <td>{{data.service_request_id}}</td>
+                <td>{{data.service_name}}</td>
+                <td>{{data.professional_name}}</td>
+                <td>{{data.booked_date}}</td>
+                <td>{{data.completion_date}}</td>
+                <td>{{data.phone}}</td>
+                <td>{{data.status}}</td>
+
+                
+                <td><a href="{{ url_for('close_service_request', service_request_id=data.service_request_id) }}"
+                    class="book_btn" style="background-color: #e28a74; color:white;">
+                    Review</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+{% endblock %}

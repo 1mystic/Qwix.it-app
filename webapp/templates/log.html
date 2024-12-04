@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link rel="stylesheet" href="{{ url_for('static', filename='logn.css') }}" />
+    <title>Login Form</title>
+   
+  </head>
+  <body>
+    <div class="cover"></div>
+    <div class="enclose_login">
+
+        <div class="left_signup">
+
+            <div class="headline">
+                <h1 style="margin-right:0;">Welcome to</h1>
+                <h1 style="margin-left:1rem; margin-right:0; color: #b4d694;">Qwix</h1>
+                <h1 style="margin-left:0;">.it</h1>
+            </div>
+            <img src="{{ url_for('static', filename='assets/bwheart.png') }}" height="78%" width="79%" class="image" alt="Registration illustration" />
+        </div>
+
+        <div class="right_login">
+
+            <form action="{{ url_for('login') }}" method="POST" class="sign_in_form" id="loginForm">
+                <h2 class="title">Welcome Back - <span style="color:#495c38 ;">Member</span></h2>
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="flash_message flash_{{ category }}">{{ message }}</div>
+                  {% endfor %}
+                {% endif %}
+               {% endwith %} 
+     
+                <label for="email" class="sr_only"></label>
+                <input id="email" class="username" type="email" name="email" placeholder="Email" required />
+                
+                <label for="password" class="sr_only"></label>
+                <input id="password" class="pwd" type="password" name="password" placeholder="Password" required />
+                
+                <label for="role" class="sr_only"></label>
+
+                <select class="input_field" id="role" name="role" required>
+
+                  <option value="customer" selected>Customer</option>
+                  <option value="professional">Professional</option>
+                  <option value="admin">Admin</option>
+
+                </select>
+                
+                <div id="errorMessage" style="color: red; display: none;"></div>
+                <button type="submit" class="btn transparent" id="sign_in_btn">
+                    Log in
+                </button>
+
+            </form>
+
+            <p class="signup_link" style="font-family: poppins; font-size: 0.9rem;">
+                Don't have an account? <a href="{{ url_for('register_cust') }}" style="color: #495c38; text-decoration: none; font-weight: 600;">Sign up</a>
+            </p>
+            
+            
+        </div>
+        
+  </body>
+</html>
