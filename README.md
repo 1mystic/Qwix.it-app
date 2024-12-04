@@ -1,4 +1,16 @@
-Qwix.it, is a multi-user household service app.
+
+# Qwix.it - Multi-User Household Service App
+
+[![Project Report](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link)
+[![YouTube Video]()
+[![Wireframes](https://drive.google.com/file/d/1-vAL9DPS098npn7_ueK7RJrd9t81KhXq/view?usp=drive_link)
+[![ER Diagram](https://drive.google.com/file/d/12yD2KjGC5nywPD2Wh0VQZg7CdiH9ez5w/view?usp=drive_link)
+
+**This app is a multi-user household service platform.**
+
+**[More detailed description of your project here]**
+
+...
 
 Setting Up the Development Environment
 Requirements:
