@@ -1,0 +1,196 @@
+POST '/api/login'
+Sample body:
+{
+  "email": "user@user",
+  "password": "user",
+  "role": "customer"
+}
+
+POST '/api/logout'
+Sample body:
+{}
+
+POST '/api/register'
+Sample body:
+{
+  "username": "newuser",
+  "email": "newuser@user",
+  "password": "password",
+  "address": "123 Street",
+  "pincode": "123456",
+  "role": "customer"
+}
+
+GET '/api/users'
+Sample body:
+{}
+
+GET '/api/users/<int:user_id>'
+Sample body:
+{}
+
+POST '/api/users'
+Sample body:
+{
+  "username": "newuser",
+  "email": "newuser@user",
+  "password": "password",
+  "address": "123 Street",
+  "pincode": "123456",
+  "phone": "1234567890",
+  "role": "customer"
+}
+
+GET '/api/customer/dashboard'
+Sample body:
+{}
+
+GET '/api/customer/save_package'
+Sample body:
+{}
+
+POST '/api/customer/save_package'
+Sample body:
+{
+  "package_id": 1
+}
+
+DELETE '/api/customer/save_package'
+Sample body:
+{
+  "package_id": 1
+}
+
+GET '/api/customer/service_request'
+Sample body:
+{}
+
+GET '/api/customer/service_request/<int:request_id>'
+Sample body:
+{}
+
+POST '/api/customer/service_request'
+Sample body:
+{
+  "package_id": 1
+}
+
+PUT '/api/customer/service_request/<int:request_id>'
+Sample body:
+{
+  "status": "completed"
+}
+
+DELETE '/api/customer/service_request/<int:request_id>'
+Sample body:
+{}
+
+POST '/api/customer/service_request/<int:request_id>/review'
+Sample body:
+{
+  "rating": 5,
+  "comment": "Great service!"
+}
+
+GET '/api/reviews/<int:package_id>'
+Sample body:
+{}
+
+POST '/api/professional/package'
+Sample body:
+{
+  "service_id": 1,
+  "name": "New Package",
+  "price": 100,
+  "duration": 60,
+  "description": "Package description"
+}
+
+PUT '/api/professional/package/<int:package_id>'
+Sample body:
+{
+  "name": "Updated Package",
+  "price": 120,
+  "duration": 90,
+  "description": "Updated description"
+}
+
+DELETE '/api/package/<int:package_id>'
+Sample body:
+{}
+
+PUT '/api/professional/service_request/<int:request_id>/status'
+Sample body:
+{
+  "status": "completed"
+}
+
+PUT '/api/admin/approve_professional/<int:professional_id>'
+Sample body:
+{}
+
+PUT '/api/admin/block_professional/<int:professional_id>'
+Sample body:
+{}
+
+DELETE '/api/admin/reject_professional/<int:professional_id>'
+Sample body:
+{}
+
+PUT '/api/admin/block_customer/<int:user_id>'
+Sample body:
+{}
+
+PUT '/api/admin/unblock_customer/<int:user_id>'
+Sample body:
+{}
+
+GET '/api/services'
+Sample body:
+{}
+
+POST '/api/admin/services'
+Sample body:
+{
+  "name": "New Service",
+  "category": "Category",
+  "base_price": 100,
+  "description": "Service description"
+}
+
+DELETE '/api/admin/service/<int:service_id>'
+Sample body:
+{}
+
+PUT '/api/admin/service/<int:service_id>'
+Sample body:
+{
+  "name": "Updated Service",
+  "category": "Updated Category",
+  "base_price": 120,
+  "description": "Updated description"
+}
+
+GET '/api/admin/dashboard'
+Sample body:
+{}
+
+POST '/api/admin/flag_package/<int:package_id>'
+Sample body:
+{}
+
+POST '/api/admin/unflag_package/<int:package_id>'
+Sample body:
+{}
+
+GET '/api/profile/<int:user_id>'
+Sample body:
+{}
+
+GET '/api/profile'
+Sample body:
+{}
+
+GET '/api/admin/professional_profile/<int:professional_id>'
+Sample body:
+{}

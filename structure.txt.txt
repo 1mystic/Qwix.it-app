@@ -1,0 +1,30 @@
+.
+└── 23f2004201_Qwixit/
+    ├── Instance
+    ├── webapp/
+    │   ├── Static/
+    │   │   ├── stylesheets.css
+    │   │   ├── docs/
+    │   │   │   └── pro_doc.pdf
+    │   │   └── assets/
+    │   │       ├── icons/
+    │   │       │   └── service_icons
+    │   │       ├── pics/
+    │   │       │   ├── pro_profile_pics.png
+    │   │       │   └── cust/
+    │   │       │       └── cust_profile_pics.png
+    │   │       └── other_images
+    │   ├── Templates/
+    │   │   ├── services/
+    │   │   │   ├── Service_Pakckages.html
+    │   │   │   └── Saved_packages
+    │   │   ├── land.html
+    │   │   └── other_pages
+    │   ├── __init__.py
+    │   ├── models.py
+    │   └── views.py
+    ├── main.py
+    ├── project_report.pdf
+    └── requirements.txt
+
+
