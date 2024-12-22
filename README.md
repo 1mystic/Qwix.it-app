@@ -1,6 +1,7 @@
 # Qwix.it - Multi-User Household Service App
 ### 🎥 Watch the Video : 
-[![Watch the Video](https://img.youtube.com/vi/47l2mmetJRA/0.jpg)](https://youtu.be/47l2mmetJRA)
+[![Watch the Video](https://img.youtube.com/vi/47l2mmetJRA/0.jpg)](https://youtu.be/47l2mmetJRA)  
+[Youtube Qwix.it Showcase](https://youtu.be/47l2mmetJRA)  
 
 Qwix.it serves as a platform for connecting service professionals with customers seeking various household services. This application enables:  
 - **Customers**: Easily book services, track requests, and provide feedback.  
@@ -38,9 +39,9 @@ Clone the repository using Git:
 ```bash
 git clone https://github.com/1mystic/Qwix.it-app.git
 
-```
-or download as a ZIP file:
-Navigate to the project's repository.
+```  
+or download as a ZIP file:  
+Navigate to the project's repository.  
 Click "Code" → "Download ZIP".
 
 ### 2. Create a Virtual Environment (Recommended)
