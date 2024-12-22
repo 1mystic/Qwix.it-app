@@ -3,10 +3,10 @@
 [![Watch the Video](https://img.youtube.com/vi/47l2mmetJRA/0.jpg)](https://youtu.be/47l2mmetJRA)  
 [Youtube Qwix.it Showcase](https://youtu.be/47l2mmetJRA)  
 
-- **[Project Report](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link)**
-- **[Wireframes](https://drive.google.com/file/d/1-vAL9DPS098npn7_ueK7RJrd9t81KhXq/view?usp=drive_link)**
-- **[ER Diagram](https://drive.google.com/file/d/12yD2KjGC5nywPD2Wh0VQZg7CdiH9ez5w/view?usp=drive_link)**
-- **[API Docs](https://documenter.getpostman.com/view/39807346/2sAYHxojVK)**
+- ### Report **[Project Report](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link)**
+- ### Wireframe **[qwix.it_wf](https://drive.google.com/file/d/1-vAL9DPS098npn7_ueK7RJrd9t81KhXq/view?usp=drive_link)**
+- ### ER Diagram **[ER-D_qwix](https://drive.google.com/file/d/12yD2KjGC5nywPD2Wh0VQZg7CdiH9ez5w/view?usp=drive_link)**
+- ### API DOCS **[postman_cwx](https://documenter.getpostman.com/view/39807346/2sAYHxojVK)**
 ---
 ## Features
 Qwix.it serves as a platform for connecting service professionals with customers seeking various household services. This application enables:  
