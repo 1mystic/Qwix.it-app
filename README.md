@@ -3,24 +3,16 @@
 [![Watch the Video](https://img.youtube.com/vi/47l2mmetJRA/0.jpg)](https://youtu.be/47l2mmetJRA)  
 [Youtube Qwix.it Showcase](https://youtu.be/47l2mmetJRA)  
 
-Qwix.it serves as a platform for connecting service professionals with customers seeking various household services. This application enables:  
-- **Customers**: Easily book services, track requests, and provide feedback.  
-- **Service Professionals**: Accept/reject requests, manage services, and customize packages.  
-- **Admin**: Oversee the platform, manage user accounts, and ensure smooth operations.
-
----
-
-## Key Resources
-
 - **[Project Report](https://drive.google.com/file/d/13dBJa5dTYcx_QbIBZ-ltoKqTy1gkvSyM/view?usp=drive_link)**
 - **[Wireframes](https://drive.google.com/file/d/1-vAL9DPS098npn7_ueK7RJrd9t81KhXq/view?usp=drive_link)**
 - **[ER Diagram](https://drive.google.com/file/d/12yD2KjGC5nywPD2Wh0VQZg7CdiH9ez5w/view?usp=drive_link)**
-
+- **[API Docs](https://documenter.getpostman.com/view/39807346/2sAYHxojVK)**
 ---
-
 ## Features
-
-- Multi-user platform with dedicated roles for customers, service professionals, and administrators.  
+Qwix.it serves as a platform for connecting service professionals with customers seeking various household services. This application enables:  
+- **Customers**: Easily search and book services, track requests, and provide feedback.  
+- **Service Professionals**: Accept/reject requests, manage services, and customize packages.  
+- **Admin**: Oversee the platform, manage user accounts, and ensure smooth operations.
 - Service booking, request tracking, and feedback mechanisms for users.  
 - Comprehensive management tools for professionals and administrators.
 
