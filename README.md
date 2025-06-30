@@ -64,16 +64,16 @@ Access the app at http://127.0.0.1:5000/ (default port)
 ## Screenshots
 
 Home
-![Landing Page](https://media.licdn.com/dms/image/v2/D4D22AQHtlOBDj1-Gqg/feedshare-shrink_2048_1536/B4DZPELlTBGoAo-/0/1734163193308?e=1737590400&v=beta&t=iClLJu-uqn3bqUXvO3E2X8TQ7wKh90OEnkxisv2cNSI)
+![Landing Page](pics/land.jpeg)
 Login
-![Login](https://media.licdn.com/dms/image/v2/D4D22AQGKpJ0VttiZJA/feedshare-shrink_2048_1536/B4DZPELlUKGgAo-/0/1734163192611?e=1737590400&v=beta&t=jBT8hXB4Vu4alYXwaT4mPiKT04ZdUiE7TVHUlvJKm_o)
+![Login](pics/login.jpeg)
 Customer Dash
-![Customer Dash](https://media.licdn.com/dms/image/v2/D4D22AQEokRPbB80VMw/feedshare-shrink_2048_1536/B4DZPELlT6GUAo-/0/1734163192002?e=1737590400&v=beta&t=UcOLxqncQTPHZLKarYl2GYhu580sEeZ93ztfHU7PlH8)
+![Customer Dash](pics/home.jpeg)
 Admin Dash
-![Admin Dash](https://media.licdn.com/dms/image/v2/D4D22AQHsHN_5VhmpsA/feedshare-shrink_2048_1536/B4DZPELlS3HUAo-/0/1734163191507?e=1737590400&v=beta&t=gVBYgEtkH2hv37AClx0bEpr8fXbcwz6BkPdQ5UVnlWQ)
+![Admin Dash](pics/admin.jpeg)
 Services
-![Service page](https://media.licdn.com/dms/image/v2/D4D22AQFwjRFf2fOVcQ/feedshare-shrink_2048_1536/B4DZPELlT9HYAs-/0/1734163192414?e=1737590400&v=beta&t=5P5pUZzcvVPv2EpIFcg6Q1xR7Q_c_UHbz2I-5ZuZ26A)
+![Service page](pics/card.jpeg)
 Search
-![User Search](https://media.licdn.com/dms/image/v2/D4D22AQE7XvNCPZ7sxw/feedshare-shrink_2048_1536/B4DZPELlUHG0Ao-/0/1734163191807?e=1737590400&v=beta&t=tJxHhIidwoDD_jYU64entqPibuGJ_oH85fV3O8rENw8)
+![User Search](pics/search.jpeg)
 User Summary
-![User Summary](https://media.licdn.com/dms/image/v2/D4D22AQFGupyT3WN5Rw/feedshare-shrink_2048_1536/B4DZPELlURHYAs-/0/1734163191652?e=1737590400&v=beta&t=Z_jb6y9z1gJ1fxyUTfDsm62BgwW6OU2KpRo9gZYijfk)
+![User Summary](pics/dash.jpeg)
